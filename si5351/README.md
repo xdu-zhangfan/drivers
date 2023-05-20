@@ -32,3 +32,5 @@ C_INCLUDES =  \
 ```
 #include "si5351.h"
 ```
+
+## 函数使用说明

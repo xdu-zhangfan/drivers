@@ -44,3 +44,29 @@ LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BU
 ```
 #include "wave_generator.h"
 ```
+
+## 函数使用说明
+```
+本函数用于生成缓冲区的第i个数据。建议采样率除以缓冲区长度的结果是目标正弦波频率的整数倍（如缓冲区长度为1000，采样率为100kHz，则将正弦波设置为100000/1000=100的整数倍，比如300、500、700、2000），否则将会产生正弦波截断现象。
+double wavegen_sinusoid_i(unsigned int buffer_point_num, double dc_offset, double amplitude, double initial_phase,
+                          unsigned int sample_rate, unsigned int wave_freq, int i);
+unsigned int buffer_point_num：缓冲区长度（点数，如果是int buf[4096]的话，应填入4096，而不是4096*sizeof(int)）
+double dc_offset：直流偏置
+double amplitude：正弦波幅度
+double initial_phase：初始相位
+unsigned int sample_rate：DAC对缓冲区的采样率
+unsigned int wave_freq：目的正弦波频率
+int i：对应缓冲区的第i个数据（缓冲区下标索引）
+```
+```
+本函数通过调用 wavegen_sinusoid_i，在缓冲区填入正弦波数据。建议采样率除以缓冲区长度的结果是目标正弦波频率的整数倍（如缓冲区长度为1000，采样率为100kHz，则将正弦波设置为100000/1000=100的整数倍，比如300、500、700、2000），否则将会产生正弦波截断现象。
+int wavegen_sinusoid(unsigned int *dst_buffer, unsigned int buffer_point_num, unsigned int dc_offset, unsigned int amplitude, double initial_phase,
+                     unsigned int sample_rate, unsigned int wave_freq);
+unsigned int *dst_buffer：缓冲区地址
+unsigned int buffer_point_num：缓冲区长度（点数，如果是int buf[4096]的话，应填入4096，而不是4096*sizeof(int)）
+double dc_offset：直流偏置
+double amplitude：正弦波幅度
+double initial_phase：初始相位
+unsigned int sample_rate：DAC对缓冲区的采样率
+unsigned int wave_freq：目的正弦波频率
+```
