@@ -1,7 +1,7 @@
 module spi_slave #(
     parameter CPOL  = 0,  // Clock Polarity, 0 and 1 allowed
     parameter CPHA  = 0,  // Clock Phase, 0 and 1 allowed
-    parameter FSB   = 0,  // First bit, 0-LSB, 1-MSB
+    parameter FSB   = 1,  // First bit, 0-LSB, 1-MSB
     parameter WIDTH = 8   // Data bit width
 ) (
     input clk,
@@ -12,10 +12,10 @@ module spi_slave #(
     input      spi_mosi,
     output reg spi_miso,
 
-    output reg spi_ready,  // output high when a byte was recived
-    input spi_en,  // input high when a byte needs to be transmitted
-    output [WIDTH - 1 : 0] spi_rx_data,  // spi_rx_data will be read and spi_tx_data will be set when both spi_ready and spi_en are high level.
-    input [WIDTH - 1 : 0] spi_tx_data
+    output reg                 spi_valid,
+    input                      spi_ready,
+    output     [WIDTH - 1 : 0] spi_rx_data,
+    input      [WIDTH - 1 : 0] spi_tx_data
 );
   // Generate Edge Interrupt
   reg  spi_sclk_0;
@@ -83,28 +83,28 @@ module spi_slave #(
     end
   end
 
-  // Generate Ready Signal
+  // Generate spi_valid Signal
   always @(posedge clk) begin
     if (!rst_n) begin
-      spi_ready <= 1'b0;
+      spi_valid <= 1'b0;
     end else begin
       if ((spi_data_cnt == WIDTH - 1) && (spi_sclk_sample_int)) begin
-        spi_ready <= 1'b1;
-      end else if ((spi_ready == 1) && spi_en) begin
-        spi_ready <= 1'b0;
+        spi_valid <= 1'b1;
+      end else if ((spi_valid == 1) && spi_ready) begin
+        spi_valid <= 1'b0;
       end else begin
-        spi_ready <= spi_ready;
+        spi_valid <= spi_valid;
       end
     end
   end
 
   // user interface
-  assign spi_rx_data = (spi_en & spi_ready) ? rx_data_buffer : {WIDTH{1'b0}};
+  assign spi_rx_data = (spi_ready & spi_valid) ? rx_data_buffer : {WIDTH{1'b0}};
   always @(posedge clk) begin
     if (!rst_n) begin
       tx_data_buffer <= {WIDTH{1'b0}};
     end else begin
-      if (spi_en && spi_ready) begin
+      if (spi_ready && spi_valid) begin
         tx_data_buffer <= spi_tx_data;
       end else begin
         tx_data_buffer <= tx_data_buffer;
