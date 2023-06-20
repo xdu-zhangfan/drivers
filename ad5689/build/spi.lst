@@ -1,0 +1,578 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"spi.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.MX_SPI1_Init,"ax",%progbits
+  17              		.align	1
+  18              		.global	MX_SPI1_Init
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv5-d16
+  25              	MX_SPI1_Init:
+  26              	.LFB147:
+  27              		.file 1 "Core/Src/spi.c"
+   1:Core/Src/spi.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/spi.c **** /**
+   3:Core/Src/spi.c ****   ******************************************************************************
+   4:Core/Src/spi.c ****   * @file    spi.c
+   5:Core/Src/spi.c ****   * @brief   This file provides code for the configuration
+   6:Core/Src/spi.c ****   *          of the SPI instances.
+   7:Core/Src/spi.c ****   ******************************************************************************
+   8:Core/Src/spi.c ****   * @attention
+   9:Core/Src/spi.c ****   *
+  10:Core/Src/spi.c ****   * Copyright (c) 2023 STMicroelectronics.
+  11:Core/Src/spi.c ****   * All rights reserved.
+  12:Core/Src/spi.c ****   *
+  13:Core/Src/spi.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/spi.c ****   * in the root directory of this software component.
+  15:Core/Src/spi.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/spi.c ****   *
+  17:Core/Src/spi.c ****   ******************************************************************************
+  18:Core/Src/spi.c ****   */
+  19:Core/Src/spi.c **** /* USER CODE END Header */
+  20:Core/Src/spi.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/spi.c **** #include "spi.h"
+  22:Core/Src/spi.c **** 
+  23:Core/Src/spi.c **** /* USER CODE BEGIN 0 */
+  24:Core/Src/spi.c **** 
+  25:Core/Src/spi.c **** /* USER CODE END 0 */
+  26:Core/Src/spi.c **** 
+  27:Core/Src/spi.c **** SPI_HandleTypeDef hspi1;
+  28:Core/Src/spi.c **** 
+  29:Core/Src/spi.c **** /* SPI1 init function */
+  30:Core/Src/spi.c **** void MX_SPI1_Init(void)
+  31:Core/Src/spi.c **** {
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 2
+
+
+  28              		.loc 1 31 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  32:Core/Src/spi.c **** 
+  33:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_Init 0 */
+  34:Core/Src/spi.c **** 
+  35:Core/Src/spi.c ****   /* USER CODE END SPI1_Init 0 */
+  36:Core/Src/spi.c **** 
+  37:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_Init 1 */
+  38:Core/Src/spi.c **** 
+  39:Core/Src/spi.c ****   /* USER CODE END SPI1_Init 1 */
+  40:Core/Src/spi.c ****   hspi1.Instance = SPI1;
+  37              		.loc 1 40 3 view .LVU1
+  38              		.loc 1 40 18 is_stmt 0 view .LVU2
+  39 0002 1448     		ldr	r0, .L5
+  40 0004 144B     		ldr	r3, .L5+4
+  41 0006 0360     		str	r3, [r0]
+  41:Core/Src/spi.c ****   hspi1.Init.Mode = SPI_MODE_MASTER;
+  42              		.loc 1 41 3 is_stmt 1 view .LVU3
+  43              		.loc 1 41 19 is_stmt 0 view .LVU4
+  44 0008 4FF48003 		mov	r3, #4194304
+  45 000c 4360     		str	r3, [r0, #4]
+  42:Core/Src/spi.c ****   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  46              		.loc 1 42 3 is_stmt 1 view .LVU5
+  47              		.loc 1 42 24 is_stmt 0 view .LVU6
+  48 000e 0023     		movs	r3, #0
+  49 0010 8360     		str	r3, [r0, #8]
+  43:Core/Src/spi.c ****   hspi1.Init.DataSize = SPI_DATASIZE_4BIT;
+  50              		.loc 1 43 3 is_stmt 1 view .LVU7
+  51              		.loc 1 43 23 is_stmt 0 view .LVU8
+  52 0012 0322     		movs	r2, #3
+  53 0014 C260     		str	r2, [r0, #12]
+  44:Core/Src/spi.c ****   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  54              		.loc 1 44 3 is_stmt 1 view .LVU9
+  55              		.loc 1 44 26 is_stmt 0 view .LVU10
+  56 0016 0361     		str	r3, [r0, #16]
+  45:Core/Src/spi.c ****   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  57              		.loc 1 45 3 is_stmt 1 view .LVU11
+  58              		.loc 1 45 23 is_stmt 0 view .LVU12
+  59 0018 4361     		str	r3, [r0, #20]
+  46:Core/Src/spi.c ****   hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  60              		.loc 1 46 3 is_stmt 1 view .LVU13
+  61              		.loc 1 46 18 is_stmt 0 view .LVU14
+  62 001a 4FF00052 		mov	r2, #536870912
+  63 001e 8261     		str	r2, [r0, #24]
+  47:Core/Src/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+  64              		.loc 1 47 3 is_stmt 1 view .LVU15
+  65              		.loc 1 47 32 is_stmt 0 view .LVU16
+  66 0020 4FF0C042 		mov	r2, #1610612736
+  67 0024 C261     		str	r2, [r0, #28]
+  48:Core/Src/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 3
+
+
+  68              		.loc 1 48 3 is_stmt 1 view .LVU17
+  69              		.loc 1 48 23 is_stmt 0 view .LVU18
+  70 0026 0362     		str	r3, [r0, #32]
+  49:Core/Src/spi.c ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  71              		.loc 1 49 3 is_stmt 1 view .LVU19
+  72              		.loc 1 49 21 is_stmt 0 view .LVU20
+  73 0028 4362     		str	r3, [r0, #36]
+  50:Core/Src/spi.c ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  74              		.loc 1 50 3 is_stmt 1 view .LVU21
+  75              		.loc 1 50 29 is_stmt 0 view .LVU22
+  76 002a 8362     		str	r3, [r0, #40]
+  51:Core/Src/spi.c ****   hspi1.Init.CRCPolynomial = 0x0;
+  77              		.loc 1 51 3 is_stmt 1 view .LVU23
+  78              		.loc 1 51 28 is_stmt 0 view .LVU24
+  79 002c C362     		str	r3, [r0, #44]
+  52:Core/Src/spi.c ****   hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  80              		.loc 1 52 3 is_stmt 1 view .LVU25
+  81              		.loc 1 52 23 is_stmt 0 view .LVU26
+  82 002e 4FF08042 		mov	r2, #1073741824
+  83 0032 4263     		str	r2, [r0, #52]
+  53:Core/Src/spi.c ****   hspi1.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
+  84              		.loc 1 53 3 is_stmt 1 view .LVU27
+  85              		.loc 1 53 26 is_stmt 0 view .LVU28
+  86 0034 8363     		str	r3, [r0, #56]
+  54:Core/Src/spi.c ****   hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
+  87              		.loc 1 54 3 is_stmt 1 view .LVU29
+  88              		.loc 1 54 28 is_stmt 0 view .LVU30
+  89 0036 C363     		str	r3, [r0, #60]
+  55:Core/Src/spi.c ****   hspi1.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
+  90              		.loc 1 55 3 is_stmt 1 view .LVU31
+  91              		.loc 1 55 41 is_stmt 0 view .LVU32
+  92 0038 0364     		str	r3, [r0, #64]
+  56:Core/Src/spi.c ****   hspi1.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
+  93              		.loc 1 56 3 is_stmt 1 view .LVU33
+  94              		.loc 1 56 41 is_stmt 0 view .LVU34
+  95 003a 4364     		str	r3, [r0, #68]
+  57:Core/Src/spi.c ****   hspi1.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
+  96              		.loc 1 57 3 is_stmt 1 view .LVU35
+  97              		.loc 1 57 31 is_stmt 0 view .LVU36
+  98 003c 8364     		str	r3, [r0, #72]
+  58:Core/Src/spi.c ****   hspi1.Init.MasterInterDataIdleness = SPI_MASTER_INTERDATA_IDLENESS_00CYCLE;
+  99              		.loc 1 58 3 is_stmt 1 view .LVU37
+ 100              		.loc 1 58 38 is_stmt 0 view .LVU38
+ 101 003e C364     		str	r3, [r0, #76]
+  59:Core/Src/spi.c ****   hspi1.Init.MasterReceiverAutoSusp = SPI_MASTER_RX_AUTOSUSP_DISABLE;
+ 102              		.loc 1 59 3 is_stmt 1 view .LVU39
+ 103              		.loc 1 59 37 is_stmt 0 view .LVU40
+ 104 0040 0365     		str	r3, [r0, #80]
+  60:Core/Src/spi.c ****   hspi1.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_DISABLE;
+ 105              		.loc 1 60 3 is_stmt 1 view .LVU41
+ 106              		.loc 1 60 32 is_stmt 0 view .LVU42
+ 107 0042 4365     		str	r3, [r0, #84]
+  61:Core/Src/spi.c ****   hspi1.Init.IOSwap = SPI_IO_SWAP_DISABLE;
+ 108              		.loc 1 61 3 is_stmt 1 view .LVU43
+ 109              		.loc 1 61 21 is_stmt 0 view .LVU44
+ 110 0044 8365     		str	r3, [r0, #88]
+  62:Core/Src/spi.c ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 4
+
+
+ 111              		.loc 1 62 3 is_stmt 1 view .LVU45
+ 112              		.loc 1 62 7 is_stmt 0 view .LVU46
+ 113 0046 FFF7FEFF 		bl	HAL_SPI_Init
+ 114              	.LVL0:
+ 115              		.loc 1 62 6 view .LVU47
+ 116 004a 00B9     		cbnz	r0, .L4
+ 117              	.L1:
+  63:Core/Src/spi.c ****   {
+  64:Core/Src/spi.c ****     Error_Handler();
+  65:Core/Src/spi.c ****   }
+  66:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_Init 2 */
+  67:Core/Src/spi.c **** 
+  68:Core/Src/spi.c ****   /* USER CODE END SPI1_Init 2 */
+  69:Core/Src/spi.c **** 
+  70:Core/Src/spi.c **** }
+ 118              		.loc 1 70 1 view .LVU48
+ 119 004c 08BD     		pop	{r3, pc}
+ 120              	.L4:
+  64:Core/Src/spi.c ****   }
+ 121              		.loc 1 64 5 is_stmt 1 view .LVU49
+ 122 004e FFF7FEFF 		bl	Error_Handler
+ 123              	.LVL1:
+ 124              		.loc 1 70 1 is_stmt 0 view .LVU50
+ 125 0052 FBE7     		b	.L1
+ 126              	.L6:
+ 127              		.align	2
+ 128              	.L5:
+ 129 0054 00000000 		.word	.LANCHOR0
+ 130 0058 00300140 		.word	1073819648
+ 131              		.cfi_endproc
+ 132              	.LFE147:
+ 134              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	HAL_SPI_MspInit
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu fpv5-d16
+ 142              	HAL_SPI_MspInit:
+ 143              	.LVL2:
+ 144              	.LFB148:
+  71:Core/Src/spi.c **** 
+  72:Core/Src/spi.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+  73:Core/Src/spi.c **** {
+ 145              		.loc 1 73 1 is_stmt 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 216
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		.loc 1 73 1 is_stmt 0 view .LVU52
+ 150 0000 10B5     		push	{r4, lr}
+ 151              	.LCFI1:
+ 152              		.cfi_def_cfa_offset 8
+ 153              		.cfi_offset 4, -8
+ 154              		.cfi_offset 14, -4
+ 155 0002 B6B0     		sub	sp, sp, #216
+ 156              	.LCFI2:
+ 157              		.cfi_def_cfa_offset 224
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 5
+
+
+ 158 0004 0446     		mov	r4, r0
+  74:Core/Src/spi.c **** 
+  75:Core/Src/spi.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 159              		.loc 1 75 3 is_stmt 1 view .LVU53
+ 160              		.loc 1 75 20 is_stmt 0 view .LVU54
+ 161 0006 0021     		movs	r1, #0
+ 162 0008 3191     		str	r1, [sp, #196]
+ 163 000a 3291     		str	r1, [sp, #200]
+ 164 000c 3391     		str	r1, [sp, #204]
+ 165 000e 3491     		str	r1, [sp, #208]
+ 166 0010 3591     		str	r1, [sp, #212]
+  76:Core/Src/spi.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+ 167              		.loc 1 76 3 is_stmt 1 view .LVU55
+ 168              		.loc 1 76 28 is_stmt 0 view .LVU56
+ 169 0012 B822     		movs	r2, #184
+ 170 0014 02A8     		add	r0, sp, #8
+ 171              	.LVL3:
+ 172              		.loc 1 76 28 view .LVU57
+ 173 0016 FFF7FEFF 		bl	memset
+ 174              	.LVL4:
+  77:Core/Src/spi.c ****   if(spiHandle->Instance==SPI1)
+ 175              		.loc 1 77 3 is_stmt 1 view .LVU58
+ 176              		.loc 1 77 15 is_stmt 0 view .LVU59
+ 177 001a 2268     		ldr	r2, [r4]
+ 178              		.loc 1 77 5 view .LVU60
+ 179 001c 1B4B     		ldr	r3, .L13
+ 180 001e 9A42     		cmp	r2, r3
+ 181 0020 01D0     		beq	.L11
+ 182              	.L7:
+  78:Core/Src/spi.c ****   {
+  79:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 0 */
+  80:Core/Src/spi.c **** 
+  81:Core/Src/spi.c ****   /* USER CODE END SPI1_MspInit 0 */
+  82:Core/Src/spi.c **** 
+  83:Core/Src/spi.c ****   /** Initializes the peripherals clock
+  84:Core/Src/spi.c ****   */
+  85:Core/Src/spi.c ****     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SPI1;
+  86:Core/Src/spi.c ****     PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
+  87:Core/Src/spi.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  88:Core/Src/spi.c ****     {
+  89:Core/Src/spi.c ****       Error_Handler();
+  90:Core/Src/spi.c ****     }
+  91:Core/Src/spi.c **** 
+  92:Core/Src/spi.c ****     /* SPI1 clock enable */
+  93:Core/Src/spi.c ****     __HAL_RCC_SPI1_CLK_ENABLE();
+  94:Core/Src/spi.c **** 
+  95:Core/Src/spi.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+  96:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+  97:Core/Src/spi.c ****     PA4     ------> SPI1_NSS
+  98:Core/Src/spi.c ****     PA5     ------> SPI1_SCK
+  99:Core/Src/spi.c ****     PA6     ------> SPI1_MISO
+ 100:Core/Src/spi.c ****     PA7     ------> SPI1_MOSI
+ 101:Core/Src/spi.c ****     */
+ 102:Core/Src/spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+ 103:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 104:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 105:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 6
+
+
+ 106:Core/Src/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 107:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 108:Core/Src/spi.c **** 
+ 109:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 1 */
+ 110:Core/Src/spi.c **** 
+ 111:Core/Src/spi.c ****   /* USER CODE END SPI1_MspInit 1 */
+ 112:Core/Src/spi.c ****   }
+ 113:Core/Src/spi.c **** }
+ 183              		.loc 1 113 1 view .LVU61
+ 184 0022 36B0     		add	sp, sp, #216
+ 185              	.LCFI3:
+ 186              		.cfi_remember_state
+ 187              		.cfi_def_cfa_offset 8
+ 188              		@ sp needed
+ 189 0024 10BD     		pop	{r4, pc}
+ 190              	.LVL5:
+ 191              	.L11:
+ 192              	.LCFI4:
+ 193              		.cfi_restore_state
+  85:Core/Src/spi.c ****     PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
+ 194              		.loc 1 85 5 is_stmt 1 view .LVU62
+  85:Core/Src/spi.c ****     PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
+ 195              		.loc 1 85 46 is_stmt 0 view .LVU63
+ 196 0026 4FF48052 		mov	r2, #4096
+ 197 002a 0023     		movs	r3, #0
+ 198 002c CDE90223 		strd	r2, [sp, #8]
+  86:Core/Src/spi.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+ 199              		.loc 1 86 5 is_stmt 1 view .LVU64
+  87:Core/Src/spi.c ****     {
+ 200              		.loc 1 87 5 view .LVU65
+  87:Core/Src/spi.c ****     {
+ 201              		.loc 1 87 9 is_stmt 0 view .LVU66
+ 202 0030 02A8     		add	r0, sp, #8
+ 203 0032 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 204              	.LVL6:
+  87:Core/Src/spi.c ****     {
+ 205              		.loc 1 87 8 view .LVU67
+ 206 0036 30BB     		cbnz	r0, .L12
+ 207              	.L9:
+  93:Core/Src/spi.c **** 
+ 208              		.loc 1 93 5 is_stmt 1 view .LVU68
+ 209              	.LBB2:
+  93:Core/Src/spi.c **** 
+ 210              		.loc 1 93 5 view .LVU69
+  93:Core/Src/spi.c **** 
+ 211              		.loc 1 93 5 view .LVU70
+ 212 0038 154B     		ldr	r3, .L13+4
+ 213 003a D3F8F020 		ldr	r2, [r3, #240]
+ 214 003e 42F48052 		orr	r2, r2, #4096
+ 215 0042 C3F8F020 		str	r2, [r3, #240]
+  93:Core/Src/spi.c **** 
+ 216              		.loc 1 93 5 view .LVU71
+ 217 0046 D3F8F020 		ldr	r2, [r3, #240]
+ 218 004a 02F48052 		and	r2, r2, #4096
+ 219 004e 0092     		str	r2, [sp]
+  93:Core/Src/spi.c **** 
+ 220              		.loc 1 93 5 view .LVU72
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 7
+
+
+ 221 0050 009A     		ldr	r2, [sp]
+ 222              	.LBE2:
+  93:Core/Src/spi.c **** 
+ 223              		.loc 1 93 5 view .LVU73
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 224              		.loc 1 95 5 view .LVU74
+ 225              	.LBB3:
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 226              		.loc 1 95 5 view .LVU75
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 227              		.loc 1 95 5 view .LVU76
+ 228 0052 D3F8E020 		ldr	r2, [r3, #224]
+ 229 0056 42F00102 		orr	r2, r2, #1
+ 230 005a C3F8E020 		str	r2, [r3, #224]
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 231              		.loc 1 95 5 view .LVU77
+ 232 005e D3F8E030 		ldr	r3, [r3, #224]
+ 233 0062 03F00103 		and	r3, r3, #1
+ 234 0066 0193     		str	r3, [sp, #4]
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 235              		.loc 1 95 5 view .LVU78
+ 236 0068 019B     		ldr	r3, [sp, #4]
+ 237              	.LBE3:
+  95:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 238              		.loc 1 95 5 view .LVU79
+ 102:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 239              		.loc 1 102 5 view .LVU80
+ 102:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 240              		.loc 1 102 25 is_stmt 0 view .LVU81
+ 241 006a F023     		movs	r3, #240
+ 242 006c 3193     		str	r3, [sp, #196]
+ 103:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 243              		.loc 1 103 5 is_stmt 1 view .LVU82
+ 103:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 244              		.loc 1 103 26 is_stmt 0 view .LVU83
+ 245 006e 0223     		movs	r3, #2
+ 246 0070 3293     		str	r3, [sp, #200]
+ 104:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 247              		.loc 1 104 5 is_stmt 1 view .LVU84
+ 104:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 248              		.loc 1 104 26 is_stmt 0 view .LVU85
+ 249 0072 0023     		movs	r3, #0
+ 250 0074 3393     		str	r3, [sp, #204]
+ 105:Core/Src/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 251              		.loc 1 105 5 is_stmt 1 view .LVU86
+ 105:Core/Src/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 252              		.loc 1 105 27 is_stmt 0 view .LVU87
+ 253 0076 3493     		str	r3, [sp, #208]
+ 106:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 254              		.loc 1 106 5 is_stmt 1 view .LVU88
+ 106:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 255              		.loc 1 106 31 is_stmt 0 view .LVU89
+ 256 0078 0523     		movs	r3, #5
+ 257 007a 3593     		str	r3, [sp, #212]
+ 107:Core/Src/spi.c **** 
+ 258              		.loc 1 107 5 is_stmt 1 view .LVU90
+ 259 007c 31A9     		add	r1, sp, #196
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 8
+
+
+ 260 007e 0548     		ldr	r0, .L13+8
+ 261 0080 FFF7FEFF 		bl	HAL_GPIO_Init
+ 262              	.LVL7:
+ 263              		.loc 1 113 1 is_stmt 0 view .LVU91
+ 264 0084 CDE7     		b	.L7
+ 265              	.L12:
+  89:Core/Src/spi.c ****     }
+ 266              		.loc 1 89 7 is_stmt 1 view .LVU92
+ 267 0086 FFF7FEFF 		bl	Error_Handler
+ 268              	.LVL8:
+ 269 008a D5E7     		b	.L9
+ 270              	.L14:
+ 271              		.align	2
+ 272              	.L13:
+ 273 008c 00300140 		.word	1073819648
+ 274 0090 00440258 		.word	1476543488
+ 275 0094 00000258 		.word	1476526080
+ 276              		.cfi_endproc
+ 277              	.LFE148:
+ 279              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	HAL_SPI_MspDeInit
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 285              		.fpu fpv5-d16
+ 287              	HAL_SPI_MspDeInit:
+ 288              	.LVL9:
+ 289              	.LFB149:
+ 114:Core/Src/spi.c **** 
+ 115:Core/Src/spi.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
+ 116:Core/Src/spi.c **** {
+ 290              		.loc 1 116 1 view -0
+ 291              		.cfi_startproc
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294              		.loc 1 116 1 is_stmt 0 view .LVU94
+ 295 0000 08B5     		push	{r3, lr}
+ 296              	.LCFI5:
+ 297              		.cfi_def_cfa_offset 8
+ 298              		.cfi_offset 3, -8
+ 299              		.cfi_offset 14, -4
+ 117:Core/Src/spi.c **** 
+ 118:Core/Src/spi.c ****   if(spiHandle->Instance==SPI1)
+ 300              		.loc 1 118 3 is_stmt 1 view .LVU95
+ 301              		.loc 1 118 15 is_stmt 0 view .LVU96
+ 302 0002 0268     		ldr	r2, [r0]
+ 303              		.loc 1 118 5 view .LVU97
+ 304 0004 074B     		ldr	r3, .L19
+ 305 0006 9A42     		cmp	r2, r3
+ 306 0008 00D0     		beq	.L18
+ 307              	.LVL10:
+ 308              	.L15:
+ 119:Core/Src/spi.c ****   {
+ 120:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 0 */
+ 121:Core/Src/spi.c **** 
+ 122:Core/Src/spi.c ****   /* USER CODE END SPI1_MspDeInit 0 */
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 9
+
+
+ 123:Core/Src/spi.c ****     /* Peripheral clock disable */
+ 124:Core/Src/spi.c ****     __HAL_RCC_SPI1_CLK_DISABLE();
+ 125:Core/Src/spi.c **** 
+ 126:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
+ 127:Core/Src/spi.c ****     PA4     ------> SPI1_NSS
+ 128:Core/Src/spi.c ****     PA5     ------> SPI1_SCK
+ 129:Core/Src/spi.c ****     PA6     ------> SPI1_MISO
+ 130:Core/Src/spi.c ****     PA7     ------> SPI1_MOSI
+ 131:Core/Src/spi.c ****     */
+ 132:Core/Src/spi.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
+ 133:Core/Src/spi.c **** 
+ 134:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 1 */
+ 135:Core/Src/spi.c **** 
+ 136:Core/Src/spi.c ****   /* USER CODE END SPI1_MspDeInit 1 */
+ 137:Core/Src/spi.c ****   }
+ 138:Core/Src/spi.c **** }
+ 309              		.loc 1 138 1 view .LVU98
+ 310 000a 08BD     		pop	{r3, pc}
+ 311              	.LVL11:
+ 312              	.L18:
+ 124:Core/Src/spi.c **** 
+ 313              		.loc 1 124 5 is_stmt 1 view .LVU99
+ 314 000c 064A     		ldr	r2, .L19+4
+ 315 000e D2F8F030 		ldr	r3, [r2, #240]
+ 316 0012 23F48053 		bic	r3, r3, #4096
+ 317 0016 C2F8F030 		str	r3, [r2, #240]
+ 132:Core/Src/spi.c **** 
+ 318              		.loc 1 132 5 view .LVU100
+ 319 001a F021     		movs	r1, #240
+ 320 001c 0348     		ldr	r0, .L19+8
+ 321              	.LVL12:
+ 132:Core/Src/spi.c **** 
+ 322              		.loc 1 132 5 is_stmt 0 view .LVU101
+ 323 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 324              	.LVL13:
+ 325              		.loc 1 138 1 view .LVU102
+ 326 0022 F2E7     		b	.L15
+ 327              	.L20:
+ 328              		.align	2
+ 329              	.L19:
+ 330 0024 00300140 		.word	1073819648
+ 331 0028 00440258 		.word	1476543488
+ 332 002c 00000258 		.word	1476526080
+ 333              		.cfi_endproc
+ 334              	.LFE149:
+ 336              		.global	hspi1
+ 337              		.section	.bss.hspi1,"aw",%nobits
+ 338              		.align	2
+ 339              		.set	.LANCHOR0,. + 0
+ 342              	hspi1:
+ 343 0000 00000000 		.space	136
+ 343      00000000 
+ 343      00000000 
+ 343      00000000 
+ 343      00000000 
+ 344              		.text
+ 345              	.Letext0:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 10
+
+
+ 346              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 347              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 348              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 349              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 350              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h"
+ 351              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 352              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 353              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h"
+ 354              		.file 10 "Core/Inc/main.h"
+ 355              		.file 11 "Core/Inc/spi.h"
+ 356              		.file 12 "<built-in>"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:17     .text.MX_SPI1_Init:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:25     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:129    .text.MX_SPI1_Init:00000054 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:135    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:142    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:273    .text.HAL_SPI_MspInit:0000008c $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:280    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:287    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:330    .text.HAL_SPI_MspDeInit:00000024 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:342    .bss.hspi1:00000000 hspi1
+C:\Users\ADMINI~1\AppData\Local\Temp\cc2AePSE.s:338    .bss.hspi1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_SPI_Init
+Error_Handler
+memset
+HAL_RCCEx_PeriphCLKConfig
+HAL_GPIO_Init
+HAL_GPIO_DeInit

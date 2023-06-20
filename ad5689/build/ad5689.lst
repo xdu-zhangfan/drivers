@@ -1,0 +1,604 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"ad5689.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.ad5689_clr_pins,"ax",%progbits
+  17              		.align	1
+  18              		.arch armv7e-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv5-d16
+  24              	ad5689_clr_pins:
+  25              	.LVL0:
+  26              	.LFB149:
+  27              		.file 1 "ad5689/ad5689.c"
+   1:ad5689/ad5689.c **** #include "ad5689.h"
+   2:ad5689/ad5689.c **** 
+   3:ad5689/ad5689.c **** //configure spi interface 
+   4:ad5689/ad5689.c **** static SPI_HandleTypeDef *ad5689_hspi;
+   5:ad5689/ad5689.c **** 
+   6:ad5689/ad5689.c **** //LDAC GPIO 
+   7:ad5689/ad5689.c **** 
+   8:ad5689/ad5689.c **** static GPIO_TypeDef *ad5689_ldac_gpio_group;
+   9:ad5689/ad5689.c **** static uint16_t ad5689_ldac_gpio_pin;
+  10:ad5689/ad5689.c **** 
+  11:ad5689/ad5689.c **** //RESET GPIO
+  12:ad5689/ad5689.c **** static GPIO_TypeDef *ad5689_rst_gpio_group;
+  13:ad5689/ad5689.c **** static uint16_t ad5689_rst_gpio_pin;
+  14:ad5689/ad5689.c **** 
+  15:ad5689/ad5689.c **** static uint32_t ad5689_send_recv_data(uint32_t tx_data)
+  16:ad5689/ad5689.c **** {
+  17:ad5689/ad5689.c ****     uint32_t rx_data ;
+  18:ad5689/ad5689.c ****     HAL_SPI_TransmitReceive( ad5689_hspi, (uint8_t *)&tx_data, (uint8_t *)&rx_data, 1,HAL_MAX_DELAY
+  19:ad5689/ad5689.c ****     return rx_data ;
+  20:ad5689/ad5689.c ****     
+  21:ad5689/ad5689.c **** }
+  22:ad5689/ad5689.c **** 
+  23:ad5689/ad5689.c **** static int ad5689_set_pins(uint16_t pins)
+  24:ad5689/ad5689.c **** {
+  25:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins ,AD5689_PIN_LDAC))
+  26:ad5689/ad5689.c **** {
+  27:ad5689/ad5689.c ****         HAL_GPIO_WritePin(ad5689_ldac_gpio_group ,ad5689_ldac_gpio_pin, 1);
+  28:ad5689/ad5689.c **** }
+  29:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins ,AD5689_PIN_RST))
+  30:ad5689/ad5689.c ****     {
+  31:ad5689/ad5689.c ****         HAL_GPIO_WritePin (ad5689_rst_gpio_group ,ad5689_rst_gpio_pin, 1);
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 2
+
+
+  32:ad5689/ad5689.c **** 
+  33:ad5689/ad5689.c ****     }
+  34:ad5689/ad5689.c ****     return 0;
+  35:ad5689/ad5689.c **** 
+  36:ad5689/ad5689.c **** }
+  37:ad5689/ad5689.c **** 
+  38:ad5689/ad5689.c **** static int ad5689_clr_pins(uint16_t pins)
+  39:ad5689/ad5689.c **** {
+  28              		.loc 1 39 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 39 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  40:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins, AD5689_PIN_LDAC))
+  38              		.loc 1 40 5 is_stmt 1 view .LVU2
+  39              		.loc 1 40 8 is_stmt 0 view .LVU3
+  40 0002 10F00104 		ands	r4, r0, #1
+  41 0006 02D1     		bne	.L5
+  42              	.LVL1:
+  43              	.L2:
+  41:ad5689/ad5689.c ****     {
+  42:ad5689/ad5689.c ****         HAL_GPIO_WritePin(ad5689_ldac_gpio_group , ad5689_ldac_gpio_pin ,0);
+  43:ad5689/ad5689.c ****     }
+  44:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins,AD5689_PIN_LDAC))
+  44              		.loc 1 44 5 is_stmt 1 view .LVU4
+  45              		.loc 1 44 8 is_stmt 0 view .LVU5
+  46 0008 4CB9     		cbnz	r4, .L6
+  47              	.L3:
+  45:ad5689/ad5689.c ****     {
+  46:ad5689/ad5689.c ****         HAL_GPIO_WritePin(ad5689_rst_gpio_group, ad5689_rst_gpio_pin,0);
+  47:ad5689/ad5689.c ****     }
+  48:ad5689/ad5689.c ****     
+  49:ad5689/ad5689.c ****     return 0;
+  48              		.loc 1 49 5 is_stmt 1 view .LVU6
+  50:ad5689/ad5689.c **** }
+  49              		.loc 1 50 1 is_stmt 0 view .LVU7
+  50 000a 0020     		movs	r0, #0
+  51 000c 10BD     		pop	{r4, pc}
+  52              	.LVL2:
+  53              	.L5:
+  42:ad5689/ad5689.c ****     }
+  54              		.loc 1 42 9 is_stmt 1 view .LVU8
+  55 000e 0022     		movs	r2, #0
+  56 0010 074B     		ldr	r3, .L7
+  57 0012 1988     		ldrh	r1, [r3]
+  58 0014 074B     		ldr	r3, .L7+4
+  59 0016 1868     		ldr	r0, [r3]
+  60              	.LVL3:
+  42:ad5689/ad5689.c ****     }
+  61              		.loc 1 42 9 is_stmt 0 view .LVU9
+  62 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  63              	.LVL4:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 3
+
+
+  64 001c F4E7     		b	.L2
+  65              	.L6:
+  46:ad5689/ad5689.c ****     }
+  66              		.loc 1 46 9 is_stmt 1 view .LVU10
+  67 001e 0022     		movs	r2, #0
+  68 0020 054B     		ldr	r3, .L7+8
+  69 0022 1988     		ldrh	r1, [r3]
+  70 0024 054B     		ldr	r3, .L7+12
+  71 0026 1868     		ldr	r0, [r3]
+  72 0028 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  73              	.LVL5:
+  74 002c EDE7     		b	.L3
+  75              	.L8:
+  76 002e 00BF     		.align	2
+  77              	.L7:
+  78 0030 00000000 		.word	.LANCHOR0
+  79 0034 00000000 		.word	.LANCHOR1
+  80 0038 00000000 		.word	.LANCHOR2
+  81 003c 00000000 		.word	.LANCHOR3
+  82              		.cfi_endproc
+  83              	.LFE149:
+  85              		.section	.text.ad5689_set_pins,"ax",%progbits
+  86              		.align	1
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu fpv5-d16
+  92              	ad5689_set_pins:
+  93              	.LVL6:
+  94              	.LFB148:
+  24:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins ,AD5689_PIN_LDAC))
+  95              		.loc 1 24 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  24:ad5689/ad5689.c ****     if (HAL_IS_BIT_SET(pins ,AD5689_PIN_LDAC))
+  99              		.loc 1 24 1 is_stmt 0 view .LVU12
+ 100 0000 10B5     		push	{r4, lr}
+ 101              	.LCFI1:
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 4, -8
+ 104              		.cfi_offset 14, -4
+ 105 0002 0446     		mov	r4, r0
+  25:ad5689/ad5689.c **** {
+ 106              		.loc 1 25 5 is_stmt 1 view .LVU13
+  25:ad5689/ad5689.c **** {
+ 107              		.loc 1 25 8 is_stmt 0 view .LVU14
+ 108 0004 10F0010F 		tst	r0, #1
+ 109 0008 04D1     		bne	.L13
+ 110              	.LVL7:
+ 111              	.L10:
+  29:ad5689/ad5689.c ****     {
+ 112              		.loc 1 29 5 is_stmt 1 view .LVU15
+  29:ad5689/ad5689.c ****     {
+ 113              		.loc 1 29 8 is_stmt 0 view .LVU16
+ 114 000a 14F0020F 		tst	r4, #2
+ 115 000e 09D1     		bne	.L14
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 4
+
+
+ 116              	.L11:
+  34:ad5689/ad5689.c **** 
+ 117              		.loc 1 34 5 is_stmt 1 view .LVU17
+  36:ad5689/ad5689.c **** 
+ 118              		.loc 1 36 1 is_stmt 0 view .LVU18
+ 119 0010 0020     		movs	r0, #0
+ 120 0012 10BD     		pop	{r4, pc}
+ 121              	.LVL8:
+ 122              	.L13:
+  27:ad5689/ad5689.c **** }
+ 123              		.loc 1 27 9 is_stmt 1 view .LVU19
+ 124 0014 0122     		movs	r2, #1
+ 125 0016 074B     		ldr	r3, .L15
+ 126 0018 1988     		ldrh	r1, [r3]
+ 127 001a 074B     		ldr	r3, .L15+4
+ 128 001c 1868     		ldr	r0, [r3]
+ 129              	.LVL9:
+  27:ad5689/ad5689.c **** }
+ 130              		.loc 1 27 9 is_stmt 0 view .LVU20
+ 131 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 132              	.LVL10:
+ 133 0022 F2E7     		b	.L10
+ 134              	.L14:
+  31:ad5689/ad5689.c **** 
+ 135              		.loc 1 31 9 is_stmt 1 view .LVU21
+ 136 0024 0122     		movs	r2, #1
+ 137 0026 054B     		ldr	r3, .L15+8
+ 138 0028 1988     		ldrh	r1, [r3]
+ 139 002a 054B     		ldr	r3, .L15+12
+ 140 002c 1868     		ldr	r0, [r3]
+ 141 002e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 142              	.LVL11:
+ 143 0032 EDE7     		b	.L11
+ 144              	.L16:
+ 145              		.align	2
+ 146              	.L15:
+ 147 0034 00000000 		.word	.LANCHOR0
+ 148 0038 00000000 		.word	.LANCHOR1
+ 149 003c 00000000 		.word	.LANCHOR2
+ 150 0040 00000000 		.word	.LANCHOR3
+ 151              		.cfi_endproc
+ 152              	.LFE148:
+ 154              		.section	.text.ad5689_send_recv_data,"ax",%progbits
+ 155              		.align	1
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.fpu fpv5-d16
+ 161              	ad5689_send_recv_data:
+ 162              	.LVL12:
+ 163              	.LFB147:
+  16:ad5689/ad5689.c ****     uint32_t rx_data ;
+ 164              		.loc 1 16 1 view -0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 16
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+  16:ad5689/ad5689.c ****     uint32_t rx_data ;
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 5
+
+
+ 168              		.loc 1 16 1 is_stmt 0 view .LVU23
+ 169 0000 00B5     		push	{lr}
+ 170              	.LCFI2:
+ 171              		.cfi_def_cfa_offset 4
+ 172              		.cfi_offset 14, -4
+ 173 0002 87B0     		sub	sp, sp, #28
+ 174              	.LCFI3:
+ 175              		.cfi_def_cfa_offset 32
+ 176 0004 0390     		str	r0, [sp, #12]
+  17:ad5689/ad5689.c ****     HAL_SPI_TransmitReceive( ad5689_hspi, (uint8_t *)&tx_data, (uint8_t *)&rx_data, 1,HAL_MAX_DELAY
+ 177              		.loc 1 17 5 is_stmt 1 view .LVU24
+  18:ad5689/ad5689.c ****     return rx_data ;
+ 178              		.loc 1 18 5 view .LVU25
+ 179 0006 4FF0FF33 		mov	r3, #-1
+ 180 000a 0093     		str	r3, [sp]
+ 181 000c 0123     		movs	r3, #1
+ 182 000e 05AA     		add	r2, sp, #20
+ 183 0010 03A9     		add	r1, sp, #12
+ 184 0012 0448     		ldr	r0, .L19
+ 185              	.LVL13:
+  18:ad5689/ad5689.c ****     return rx_data ;
+ 186              		.loc 1 18 5 is_stmt 0 view .LVU26
+ 187 0014 0068     		ldr	r0, [r0]
+ 188 0016 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 189              	.LVL14:
+  19:ad5689/ad5689.c ****     
+ 190              		.loc 1 19 5 is_stmt 1 view .LVU27
+  21:ad5689/ad5689.c **** 
+ 191              		.loc 1 21 1 is_stmt 0 view .LVU28
+ 192 001a 0598     		ldr	r0, [sp, #20]
+ 193 001c 07B0     		add	sp, sp, #28
+ 194              	.LCFI4:
+ 195              		.cfi_def_cfa_offset 4
+ 196              		@ sp needed
+ 197 001e 5DF804FB 		ldr	pc, [sp], #4
+ 198              	.L20:
+ 199 0022 00BF     		.align	2
+ 200              	.L19:
+ 201 0024 00000000 		.word	.LANCHOR4
+ 202              		.cfi_endproc
+ 203              	.LFE147:
+ 205              		.section	.text.ad5689_send_cmd,"ax",%progbits
+ 206              		.align	1
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.fpu fpv5-d16
+ 212              	ad5689_send_cmd:
+ 213              	.LVL15:
+ 214              	.LFB150:
+  51:ad5689/ad5689.c **** 
+  52:ad5689/ad5689.c **** static uint32_t ad5689_send_cmd(uint8_t cmd , uint8_t addr , uint16_t data)
+  53:ad5689/ad5689.c **** {
+ 215              		.loc 1 53 1 is_stmt 1 view -0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 6
+
+
+ 219              		.loc 1 53 1 is_stmt 0 view .LVU30
+ 220 0000 08B5     		push	{r3, lr}
+ 221              	.LCFI5:
+ 222              		.cfi_def_cfa_offset 8
+ 223              		.cfi_offset 3, -8
+ 224              		.cfi_offset 14, -4
+  54:ad5689/ad5689.c ****     uint32_t send_data =(((uint32_t)cmd) <<(16+4)) | (((uint32_t)addr)<<16) | data;
+ 225              		.loc 1 54 5 is_stmt 1 view .LVU31
+ 226              		.loc 1 54 71 is_stmt 0 view .LVU32
+ 227 0002 0904     		lsls	r1, r1, #16
+ 228              	.LVL16:
+ 229              		.loc 1 54 52 view .LVU33
+ 230 0004 41EA0050 		orr	r0, r1, r0, lsl #20
+ 231              	.LVL17:
+  55:ad5689/ad5689.c ****     return ad5689_send_recv_data(send_data);
+ 232              		.loc 1 55 5 is_stmt 1 view .LVU34
+ 233              		.loc 1 55 12 is_stmt 0 view .LVU35
+ 234 0008 1043     		orrs	r0, r0, r2
+ 235              	.LVL18:
+ 236              		.loc 1 55 12 view .LVU36
+ 237 000a FFF7FEFF 		bl	ad5689_send_recv_data
+ 238              	.LVL19:
+  56:ad5689/ad5689.c **** 
+  57:ad5689/ad5689.c **** }
+ 239              		.loc 1 57 1 view .LVU37
+ 240 000e 08BD     		pop	{r3, pc}
+ 241              		.cfi_endproc
+ 242              	.LFE150:
+ 244              		.section	.text.ad5689_init,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	ad5689_init
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv5-d16
+ 252              	ad5689_init:
+ 253              	.LVL20:
+ 254              	.LFB151:
+  58:ad5689/ad5689.c **** 
+  59:ad5689/ad5689.c **** int ad5689_init(
+  60:ad5689/ad5689.c ****     //Configure SPI interface
+  61:ad5689/ad5689.c ****     SPI_HandleTypeDef *ad5689_hspi_i,
+  62:ad5689/ad5689.c ****     
+  63:ad5689/ad5689.c ****     //LDAC GPIO 
+  64:ad5689/ad5689.c ****     GPIO_TypeDef *ad5689_ldac_gpio_group_i,
+  65:ad5689/ad5689.c ****     uint16_t ad5689_ldac_gpio_pin_i,
+  66:ad5689/ad5689.c **** 
+  67:ad5689/ad5689.c ****     //RESET GPIO 
+  68:ad5689/ad5689.c ****     GPIO_TypeDef  *ad5689_rst_gpio_group_i,
+  69:ad5689/ad5689.c ****     uint16_t ad5689_rst_gpio_pin_i
+  70:ad5689/ad5689.c **** 
+  71:ad5689/ad5689.c **** )
+  72:ad5689/ad5689.c **** {
+ 255              		.loc 1 72 1 is_stmt 1 view -0
+ 256              		.cfi_startproc
+ 257              		@ args = 4, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 7
+
+
+ 259              		.loc 1 72 1 is_stmt 0 view .LVU39
+ 260 0000 10B5     		push	{r4, lr}
+ 261              	.LCFI6:
+ 262              		.cfi_def_cfa_offset 8
+ 263              		.cfi_offset 4, -8
+ 264              		.cfi_offset 14, -4
+  73:ad5689/ad5689.c ****     //configure values
+  74:ad5689/ad5689.c ****     ad5689_hspi = ad5689_hspi_i;
+ 265              		.loc 1 74 5 is_stmt 1 view .LVU40
+ 266              		.loc 1 74 17 is_stmt 0 view .LVU41
+ 267 0002 0E4C     		ldr	r4, .L25
+ 268 0004 2060     		str	r0, [r4]
+  75:ad5689/ad5689.c **** 
+  76:ad5689/ad5689.c **** 
+  77:ad5689/ad5689.c ****     ad5689_ldac_gpio_group = ad5689_ldac_gpio_group_i;
+ 269              		.loc 1 77 5 is_stmt 1 view .LVU42
+ 270              		.loc 1 77 28 is_stmt 0 view .LVU43
+ 271 0006 0E48     		ldr	r0, .L25+4
+ 272              	.LVL21:
+ 273              		.loc 1 77 28 view .LVU44
+ 274 0008 0160     		str	r1, [r0]
+  78:ad5689/ad5689.c ****     ad5689_ldac_gpio_pin = ad5689_ldac_gpio_pin_i;
+ 275              		.loc 1 78 5 is_stmt 1 view .LVU45
+ 276              		.loc 1 78 26 is_stmt 0 view .LVU46
+ 277 000a 0E49     		ldr	r1, .L25+8
+ 278              	.LVL22:
+ 279              		.loc 1 78 26 view .LVU47
+ 280 000c 0A80     		strh	r2, [r1]	@ movhi
+  79:ad5689/ad5689.c **** 
+  80:ad5689/ad5689.c ****     ad5689_rst_gpio_group = ad5689_rst_gpio_group_i;
+ 281              		.loc 1 80 5 is_stmt 1 view .LVU48
+ 282              		.loc 1 80 27 is_stmt 0 view .LVU49
+ 283 000e 0E4A     		ldr	r2, .L25+12
+ 284              	.LVL23:
+ 285              		.loc 1 80 27 view .LVU50
+ 286 0010 1360     		str	r3, [r2]
+  81:ad5689/ad5689.c ****     ad5689_rst_gpio_pin = ad5689_rst_gpio_pin_i;
+ 287              		.loc 1 81 5 is_stmt 1 view .LVU51
+ 288              		.loc 1 81 25 is_stmt 0 view .LVU52
+ 289 0012 BDF80820 		ldrh	r2, [sp, #8]
+ 290 0016 0D4B     		ldr	r3, .L25+16
+ 291              	.LVL24:
+ 292              		.loc 1 81 25 view .LVU53
+ 293 0018 1A80     		strh	r2, [r3]	@ movhi
+  82:ad5689/ad5689.c **** 
+  83:ad5689/ad5689.c ****     //Initialize ad5689
+  84:ad5689/ad5689.c ****     ad5689_set_pins(AD5689_PIN_RST | AD5689_PIN_LDAC);
+ 294              		.loc 1 84 5 is_stmt 1 view .LVU54
+ 295 001a 0320     		movs	r0, #3
+ 296              		.loc 1 84 5 is_stmt 0 view .LVU55
+ 297 001c FFF7FEFF 		bl	ad5689_set_pins
+ 298              	.LVL25:
+  85:ad5689/ad5689.c ****     HAL_Delay(1);
+ 299              		.loc 1 85 5 is_stmt 1 view .LVU56
+ 300 0020 0120     		movs	r0, #1
+ 301 0022 FFF7FEFF 		bl	HAL_Delay
+ 302              	.LVL26:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 8
+
+
+  86:ad5689/ad5689.c ****     ad5689_clr_pins(AD5689_PIN_RST);
+ 303              		.loc 1 86 5 view .LVU57
+ 304 0026 0220     		movs	r0, #2
+ 305 0028 FFF7FEFF 		bl	ad5689_clr_pins
+ 306              	.LVL27:
+  87:ad5689/ad5689.c ****     HAL_Delay(1);
+ 307              		.loc 1 87 5 view .LVU58
+ 308 002c 0120     		movs	r0, #1
+ 309 002e FFF7FEFF 		bl	HAL_Delay
+ 310              	.LVL28:
+  88:ad5689/ad5689.c ****     ad5689_set_pins(AD5689_PIN_RST);
+ 311              		.loc 1 88 5 view .LVU59
+ 312 0032 0220     		movs	r0, #2
+ 313 0034 FFF7FEFF 		bl	ad5689_set_pins
+ 314              	.LVL29:
+  89:ad5689/ad5689.c **** 
+  90:ad5689/ad5689.c ****     return 0;
+ 315              		.loc 1 90 5 view .LVU60
+  91:ad5689/ad5689.c **** }
+ 316              		.loc 1 91 1 is_stmt 0 view .LVU61
+ 317 0038 0020     		movs	r0, #0
+ 318 003a 10BD     		pop	{r4, pc}
+ 319              	.LVL30:
+ 320              	.L26:
+ 321              		.loc 1 91 1 view .LVU62
+ 322              		.align	2
+ 323              	.L25:
+ 324 003c 00000000 		.word	.LANCHOR4
+ 325 0040 00000000 		.word	.LANCHOR1
+ 326 0044 00000000 		.word	.LANCHOR0
+ 327 0048 00000000 		.word	.LANCHOR3
+ 328 004c 00000000 		.word	.LANCHOR2
+ 329              		.cfi_endproc
+ 330              	.LFE151:
+ 332              		.section	.text.ad5689_set_dac,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	ad5689_set_dac
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 338              		.fpu fpv5-d16
+ 340              	ad5689_set_dac:
+ 341              	.LVL31:
+ 342              	.LFB152:
+  92:ad5689/ad5689.c **** uint32_t ad5689_set_dac(uint32_t data , uint8_t dac_ch, uint8_t write_flag,uint8_t update_flag)
+  93:ad5689/ad5689.c **** {
+ 343              		.loc 1 93 1 is_stmt 1 view -0
+ 344              		.cfi_startproc
+ 345              		@ args = 0, pretend = 0, frame = 0
+ 346              		@ frame_needed = 0, uses_anonymous_args = 0
+ 347              		.loc 1 93 1 is_stmt 0 view .LVU64
+ 348 0000 08B5     		push	{r3, lr}
+ 349              	.LCFI7:
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 3, -8
+ 352              		.cfi_offset 14, -4
+ 353 0002 8446     		mov	ip, r0
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 9
+
+
+  94:ad5689/ad5689.c **** 
+  95:ad5689/ad5689.c ****     uint8_t cmd = 0;
+ 354              		.loc 1 95 5 is_stmt 1 view .LVU65
+ 355              	.LVL32:
+  96:ad5689/ad5689.c ****     if (write_flag)
+ 356              		.loc 1 96 5 view .LVU66
+ 357              		.loc 1 96 8 is_stmt 0 view .LVU67
+ 358 0004 1046     		mov	r0, r2
+ 359              	.LVL33:
+ 360              		.loc 1 96 8 view .LVU68
+ 361 0006 02B1     		cbz	r2, .L28
+  97:ad5689/ad5689.c ****     {
+  98:ad5689/ad5689.c ****         cmd |= AD5689_CMD_WRITE_INPUT_REG;
+ 362              		.loc 1 98 13 view .LVU69
+ 363 0008 0120     		movs	r0, #1
+ 364              	.L28:
+ 365              	.LVL34:
+  99:ad5689/ad5689.c ****     }
+ 100:ad5689/ad5689.c ****     if(update_flag)
+ 366              		.loc 1 100 5 is_stmt 1 view .LVU70
+ 367              		.loc 1 100 7 is_stmt 0 view .LVU71
+ 368 000a 0BB1     		cbz	r3, .L29
+ 101:ad5689/ad5689.c ****     {
+ 102:ad5689/ad5689.c ****         cmd |=AD5689_CMD_UPDATE_DAC_REG;
+ 369              		.loc 1 102 9 is_stmt 1 view .LVU72
+ 370              		.loc 1 102 13 is_stmt 0 view .LVU73
+ 371 000c 40F00200 		orr	r0, r0, #2
+ 372              	.LVL35:
+ 373              	.L29:
+ 103:ad5689/ad5689.c **** 
+ 104:ad5689/ad5689.c ****     }
+ 105:ad5689/ad5689.c ****     uint32_t res  = ad5689_send_cmd (cmd ,dac_ch,data);
+ 374              		.loc 1 105 5 is_stmt 1 view .LVU74
+ 375              		.loc 1 105 21 is_stmt 0 view .LVU75
+ 376 0010 1FFA8CF2 		uxth	r2, ip
+ 377              	.LVL36:
+ 378              		.loc 1 105 21 view .LVU76
+ 379 0014 FFF7FEFF 		bl	ad5689_send_cmd
+ 380              	.LVL37:
+ 106:ad5689/ad5689.c **** 
+ 107:ad5689/ad5689.c ****     return res;
+ 381              		.loc 1 107 5 is_stmt 1 view .LVU77
+ 108:ad5689/ad5689.c **** }
+ 382              		.loc 1 108 1 is_stmt 0 view .LVU78
+ 383 0018 08BD     		pop	{r3, pc}
+ 384              		.cfi_endproc
+ 385              	.LFE152:
+ 387              		.section	.bss.ad5689_hspi,"aw",%nobits
+ 388              		.align	2
+ 389              		.set	.LANCHOR4,. + 0
+ 392              	ad5689_hspi:
+ 393 0000 00000000 		.space	4
+ 394              		.section	.bss.ad5689_ldac_gpio_group,"aw",%nobits
+ 395              		.align	2
+ 396              		.set	.LANCHOR1,. + 0
+ 399              	ad5689_ldac_gpio_group:
+ 400 0000 00000000 		.space	4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 10
+
+
+ 401              		.section	.bss.ad5689_ldac_gpio_pin,"aw",%nobits
+ 402              		.align	1
+ 403              		.set	.LANCHOR0,. + 0
+ 406              	ad5689_ldac_gpio_pin:
+ 407 0000 0000     		.space	2
+ 408              		.section	.bss.ad5689_rst_gpio_group,"aw",%nobits
+ 409              		.align	2
+ 410              		.set	.LANCHOR3,. + 0
+ 413              	ad5689_rst_gpio_group:
+ 414 0000 00000000 		.space	4
+ 415              		.section	.bss.ad5689_rst_gpio_pin,"aw",%nobits
+ 416              		.align	1
+ 417              		.set	.LANCHOR2,. + 0
+ 420              	ad5689_rst_gpio_pin:
+ 421 0000 0000     		.space	2
+ 422              		.text
+ 423              	.Letext0:
+ 424              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 425              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 426              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 427              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 428              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 429              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h"
+ 430              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 431              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ad5689.c
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:17     .text.ad5689_clr_pins:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:24     .text.ad5689_clr_pins:00000000 ad5689_clr_pins
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:78     .text.ad5689_clr_pins:00000030 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:86     .text.ad5689_set_pins:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:92     .text.ad5689_set_pins:00000000 ad5689_set_pins
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:147    .text.ad5689_set_pins:00000034 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:155    .text.ad5689_send_recv_data:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:161    .text.ad5689_send_recv_data:00000000 ad5689_send_recv_data
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:201    .text.ad5689_send_recv_data:00000024 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:206    .text.ad5689_send_cmd:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:212    .text.ad5689_send_cmd:00000000 ad5689_send_cmd
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:245    .text.ad5689_init:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:252    .text.ad5689_init:00000000 ad5689_init
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:324    .text.ad5689_init:0000003c $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:333    .text.ad5689_set_dac:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:340    .text.ad5689_set_dac:00000000 ad5689_set_dac
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:388    .bss.ad5689_hspi:00000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:392    .bss.ad5689_hspi:00000000 ad5689_hspi
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:395    .bss.ad5689_ldac_gpio_group:00000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:399    .bss.ad5689_ldac_gpio_group:00000000 ad5689_ldac_gpio_group
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:402    .bss.ad5689_ldac_gpio_pin:00000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:406    .bss.ad5689_ldac_gpio_pin:00000000 ad5689_ldac_gpio_pin
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:409    .bss.ad5689_rst_gpio_group:00000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:413    .bss.ad5689_rst_gpio_group:00000000 ad5689_rst_gpio_group
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:416    .bss.ad5689_rst_gpio_pin:00000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cczdarnd.s:420    .bss.ad5689_rst_gpio_pin:00000000 ad5689_rst_gpio_pin
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_TransmitReceive
+HAL_Delay

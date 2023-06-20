@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "dac8552.h": "c",
+        "stm32h7xx_hal.h": "c"
+    }
+}
