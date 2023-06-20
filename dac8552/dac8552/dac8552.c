@@ -23,12 +23,37 @@ static uint32_t dac8552_send_recv_data(dac8552_HandleTypeDef *dev_handle, uint32
 }
 
 // send DAC value to DAC8552
-int dac8552_set_value(dac8552_HandleTypeDef *dev_handle)
+int dac8552_set_value_a(dac8552_HandleTypeDef *dev_handle)
 {
-    dac8552_send_recv_data(dev_handle, (unsigned int)(((1 << (dev_handle->ch_sel) << 20) |
-                                                       (dev_handle->ch_sel << 18) |
+    dac8552_send_recv_data(dev_handle, (unsigned int)(((1 << 20) |
+                                                       (0 << 18) |
                                                        (dev_handle->out_imp_pdn << 16) |
-                                                       (dev_handle->out_value))));
+                                                       (dev_handle->out_value_a))));
+
+    return 0;
+}
+
+int dac8552_set_value_b(dac8552_HandleTypeDef *dev_handle)
+{
+    dac8552_send_recv_data(dev_handle, (unsigned int)((2 << 20) |
+                                                      (1 << 18) |
+                                                      (dev_handle->out_imp_pdn << 16) |
+                                                      (dev_handle->out_value_b)));
+
+    return 0;
+}
+
+int dac8552_set_value_ab(dac8552_HandleTypeDef *dev_handle)
+{
+    dac8552_send_recv_data(dev_handle, (unsigned int)(((0 << 20) |
+                                                       (0 << 18) |
+                                                       (dev_handle->out_imp_pdn << 16) |
+                                                       (dev_handle->out_value_a))));
+
+    dac8552_send_recv_data(dev_handle, (unsigned int)(((3 << 20) |
+                                                       (1 << 18) |
+                                                       (dev_handle->out_imp_pdn << 16) |
+                                                       (dev_handle->out_value_b))));
 
     return 0;
 }
