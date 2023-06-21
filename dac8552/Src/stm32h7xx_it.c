@@ -228,7 +228,6 @@ void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
 
-  dev_dac8552_handle.sync_en = 0;
   dev_dac8552_handle.out_imp_pdn = DAC8552_OUTIMP_PDN_NONE;
   dev_dac8552_handle.out_value_a = wavegen_sinusoid_i(8000, 8192, 4096, 0, 10000, 500, dac8552_value);
   dev_dac8552_handle.out_value_b = wavegen_sinusoid_i(8000, 8192, 4096, PI, 10000, 500, dac8552_value);

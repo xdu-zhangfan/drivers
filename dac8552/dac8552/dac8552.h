@@ -12,7 +12,6 @@ typedef struct
 {
     SPI_HandleTypeDef *dac8552_hspi; // HAL SPI interface of DAC8552
 
-    unsigned char sync_en;          // make A and B output at the same time
     unsigned char out_imp_pdn;      // output impedance, independent
     unsigned short int out_value_a; // output value, effective when [out_imp_pdn == 0]
     unsigned short int out_value_b; // output value, effective when [out_imp_pdn == 0]
