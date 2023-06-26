@@ -14,24 +14,21 @@
 #define AD5689_CMD_SET_DCEN 0X9
 #define AD5689_CMD_SET_READ_BACK 0Xa
 
-
-//DAC register values (Mask codes) in argument[uint8_t dac_ch] function 
+// DAC register values (Mask codes) in argument[uint8_t dac_ch] function
 #define AD5689_DAC_CH_A_ADDR 0X1
 #define AD5689_DAC_CH_B_ADDR 0X8
 
 int ad5689_init(
-    //Configure spi interface 
+    // Configure spi interface
     SPI_HandleTypeDef *ad5689_hspi_i,
-    //LDAC GPIO
+    // LDAC GPIO
     GPIO_TypeDef *ad5689_ldac_gpio_group_i,
     uint16_t ad5689_ldac_gpio_pin_i,
 
-    //RESET GPIO 
+    // RESET GPIO
     GPIO_TypeDef *ad5689_rst_gpio_i,
-    uint16_t    ad5689_rst_gpio_pin_i
-);
+    uint16_t ad5689_rst_gpio_pin_i);
 
-//接口函数
- uint32_t ad5689_set_dac( uint32_t data , uint8_t dac_ch , uint8_t write_flag ,uint8_t update_flag) ;
+uint32_t ad5689_set_dac(uint32_t data, uint8_t dac_ch, uint8_t write_flag, uint8_t update_flag);
 
 #endif // _AD5689_H_
