@@ -26,6 +26,49 @@
 #define AD9910_REG_SF_RAM_PF7 0x15
 #define AD9910_REG_RAM_CTRL 0x16
 
+// GPIO Mask codes
+#define AD9910_GPIO_SYNC ((unsigned int)(1 << 0))
+#define AD9910_GPIO_RSO ((unsigned int)(1 << 1))
+#define AD9910_GPIO_PF0 ((unsigned int)(1 << 2))
+#define AD9910_GPIO_PF1 ((unsigned int)(1 << 3))
+#define AD9910_GPIO_PF2 ((unsigned int)(1 << 4))
+#define AD9910_GPIO_OSK ((unsigned int)(1 << 5))
+#define AD9910_GPIO_DROVER ((unsigned int)(1 << 6))
+#define AD9910_GPIO_DRCTL ((unsigned int)(1 << 7))
+#define AD9910_GPIO_DRHOLD ((unsigned int)(1 << 8))
+#define AD9910_GPIO_IOUPDATE ((unsigned int)(1 << 9))
+#define AD9910_GPIO_RESET ((unsigned int)(1 << 10))
+
+// Some definitions which are often used
+#define AD9910_IF_BIT_SET(x, y) HAL_IS_BIT_SET(x, y)
+#define AD9910_IF_BIT_CLR(x, y) HAL_IS_BIT_CLR(x, y)
+#define AD9910_DELAY_MS(x) HAL_Delay(x)
+
+// REFCLK output current select
+#define AD9910_REFCLK_OUTCURRENT_DISABLE 0
+#define AD9910_REFCLK_OUTCURRENT_LOW 1
+#define AD9910_REFCLK_OUTCURRENT_MEDIUM 2
+#define AD9910_REFCLK_OUTCURRENT_HIGH 3
+
+// PLL VCO select
+#define AD9910_VCO_SEL_0 0
+#define AD9910_VCO_SEL_1 1
+#define AD9910_VCO_SEL_2 2
+#define AD9910_VCO_SEL_3 3
+#define AD9910_VCO_SEL_4 4
+#define AD9910_VCO_SEL_5 5
+#define AD9910_VCO_BYPASSED 6
+
+// PLL Charge Pump select
+#define AD9910_PLL_CHARGE_PUMP_CUR_212 0
+#define AD9910_PLL_CHARGE_PUMP_CUR_237 1
+#define AD9910_PLL_CHARGE_PUMP_CUR_262 2
+#define AD9910_PLL_CHARGE_PUMP_CUR_287 3
+#define AD9910_PLL_CHARGE_PUMP_CUR_312 4
+#define AD9910_PLL_CHARGE_PUMP_CUR_337 5
+#define AD9910_PLL_CHARGE_PUMP_CUR_363 6
+#define AD9910_PLL_CHARGE_PUMP_CUR_387 7
+
 // Parameters settings
 typedef struct
 {
@@ -123,7 +166,7 @@ typedef struct
 // Ports settings
 typedef struct
 {
-    SPI_HandleTypeDef hspi;
+    SPI_HandleTypeDef *hspi;
     GPIO_TypeDef *sync_gpio_group;
     uint16_t sync_gpio_pin;
     GPIO_TypeDef *rso_gpio_group;
@@ -147,5 +190,7 @@ typedef struct
     GPIO_TypeDef *reset_gpio_group;
     uint16_t reset_gpio_pin;
 } ad9910_PortSettingsTypeDef;
+
+int ad9910_init(ad9910_PortSettingsTypeDef *port);
 
 #endif
