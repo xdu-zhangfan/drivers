@@ -192,5 +192,8 @@ typedef struct
 } ad9910_PortSettingsTypeDef;
 
 int ad9910_init(ad9910_PortSettingsTypeDef *port);
+int ad9910_set_pll(unsigned char pll_en, unsigned char input_mux_sel, unsigned char refclk_out_current,
+                   unsigned char charge_pump_cur_sel, unsigned char main_divider_value, unsigned char vco_sel);
+int ad9910_set_singal_tone(unsigned int amptitude, unsigned int frequency, unsigned int init_phase);
 
 #endif
