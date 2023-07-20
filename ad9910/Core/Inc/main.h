@@ -31,9 +31,14 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "wave_generator.h"
+#include "stdio.h"
+#include "stdarg.h"
+
 #include "stm32f401xc.h"
 #include "arm_math.h"
+
+#include "ad9910.h"
+#include "wave_generator.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -61,6 +66,30 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_Pin GPIO_PIN_13
 #define LED_GPIO_Port GPIOC
+#define AD9910_OSK_Pin GPIO_PIN_0
+#define AD9910_OSK_GPIO_Port GPIOB
+#define AD9910_DRC_Pin GPIO_PIN_1
+#define AD9910_DRC_GPIO_Port GPIOB
+#define AD9910_IOUPDATE_Pin GPIO_PIN_2
+#define AD9910_IOUPDATE_GPIO_Port GPIOB
+#define AD9910_RESET_Pin GPIO_PIN_10
+#define AD9910_RESET_GPIO_Port GPIOB
+#define AD9910_SYNC_Pin GPIO_PIN_12
+#define AD9910_SYNC_GPIO_Port GPIOB
+#define AD9910_PF1_Pin GPIO_PIN_13
+#define AD9910_PF1_GPIO_Port GPIOB
+#define AD9910_SYNCB3_Pin GPIO_PIN_3
+#define AD9910_SYNCB3_GPIO_Port GPIOB
+#define AD9910_RSO_Pin GPIO_PIN_5
+#define AD9910_RSO_GPIO_Port GPIOB
+#define AD9910_PF2_Pin GPIO_PIN_6
+#define AD9910_PF2_GPIO_Port GPIOB
+#define AD9910_PF0_Pin GPIO_PIN_7
+#define AD9910_PF0_GPIO_Port GPIOB
+#define AD9910_DRO_Pin GPIO_PIN_8
+#define AD9910_DRO_GPIO_Port GPIOB
+#define AD9910_DRH_Pin GPIO_PIN_9
+#define AD9910_DRH_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
