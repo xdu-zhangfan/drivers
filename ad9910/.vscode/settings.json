@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "ad9910.h": "c",
+        "stm32h7xx_hal.h": "c"
     }
 }
