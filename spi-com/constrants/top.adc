@@ -1,0 +1,46 @@
+set_pin_assignment	{ channel_a }	{ LOCATION = E16; IOSTANDARD = LVCMOS25; PULLTYPE = NONE; }
+set_pin_assignment	{ channel_b }	{ LOCATION = C17; IOSTANDARD = LVCMOS25; PULLTYPE = NONE; }
+set_pin_assignment	{ channel_freq }	{ LOCATION = V18; IOSTANDARD = LVCMOS25; PULLTYPE = NONE; }
+set_pin_assignment	{ clk_100m }	{ LOCATION = V7; IOSTANDARD = DIFF_SSTL15; }
+set_pin_assignment	{ clk_ref_10m }	{ LOCATION = V19; IOSTANDARD = LVDS25; PULLTYPE = NONE; DIFFRESISTOR = NONE; }
+set_pin_assignment	{ key_rst }	{ LOCATION = E8; IOSTANDARD = LVCMOS18; PULLTYPE = NONE; }
+set_pin_assignment	{ leds[1] }	{ LOCATION = P20; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[2] }	{ LOCATION = R21; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[3] }	{ LOCATION = R22; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[4] }	{ LOCATION = P21; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[5] }	{ LOCATION = P22; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[6] }	{ LOCATION = P19; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[7] }	{ LOCATION = N19; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ leds[8] }	{ LOCATION = M18; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ spi_m_csn }	{ LOCATION = H8; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ spi_m_miso }	{ LOCATION = E9; IOSTANDARD = LVCMOS18; PULLTYPE = NONE; }
+set_pin_assignment	{ spi_m_mosi }	{ LOCATION = F8; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ spi_m_sck }	{ LOCATION = A8; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ spi_s_csn }	{ LOCATION = F9; IOSTANDARD = LVCMOS18; PULLTYPE = NONE; }
+set_pin_assignment	{ spi_s_miso }	{ LOCATION = A9; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+set_pin_assignment	{ spi_s_mosi }	{ LOCATION = G8; IOSTANDARD = LVCMOS18; PULLTYPE = NONE; }
+set_pin_assignment	{ spi_s_sck }	{ LOCATION = H9; IOSTANDARD = LVCMOS18; PULLTYPE = NONE; }
+set_pin_assignment	{ test_point }	{ LOCATION = D21; IOSTANDARD = LVCMOS25; DRIVESTRENGTH = 16; PULLTYPE = NONE; SLEWRATE = FAST; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

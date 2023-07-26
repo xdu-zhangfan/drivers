@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Spi>
+    <Config>
+        <A_SCLK/>
+        <A_Ssn_Hold_Time/>
+        <A_Ssn_Setup_Time/>
+        <CType>Slave</CType>
+        <En_Rx_Partial>false</En_Rx_Partial>
+        <Rx_Partial>1</Rx_Partial>
+        <Sclk/>
+        <Sclk_Phase>0</Sclk_Phase>
+        <Sclk_Polarity>0</Sclk_Polarity>
+        <Shifter_Direction>MSB First</Shifter_Direction>
+        <Slave_Num>1</Slave_Num>
+        <Ssn_Hold_Time/>
+        <Ssn_Setup_Time/>
+        <Sys_Clk/>
+        <Width>8</Width>
+    </Config>
+    <GeneralConfig>
+        <Device>PH1A90SBG484</Device>
+        <Type>PH1_LOGIC_SPI</Type>
+        <create_VHDL>false</create_VHDL>
+        <inst>spi_slave_core</inst>
+    </GeneralConfig>
+    <GeneratedFiles>
+        <GateVerilog Enable="true">spi_slave_core_gate.v</GateVerilog>
+    </GeneratedFiles>
+</Spi>

@@ -1,0 +1,1 @@
+vsim work.bench -voptargs=+acc=bcglnprst glbl
