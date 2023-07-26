@@ -1221,9 +1221,9 @@ module spi (
     end
   end
 
-  reg [ 7 : 0] trans_mode_buf;
-  reg [15 : 0] trans_start_addr_buf;
-  reg [15 : 0] trans_end_addr_buf;
+  reg [7 : 0] trans_mode_buf;
+  reg [7 : 0] trans_start_addr_buf;
+  reg [7 : 0] trans_end_addr_buf;
   always @(posedge clk) begin
     if (!rstn) begin
       trans_mode_buf       <= 8'h00;
@@ -1232,8 +1232,8 @@ module spi (
     end else begin
       if (trans_int) begin
         trans_mode_buf       <= trans_mode;
-        trans_start_addr_buf <= {trans_start_addr, 8'h0};
-        trans_end_addr_buf   <= {trans_end_addr, 8'h0};
+        trans_start_addr_buf <= trans_start_addr;
+        trans_end_addr_buf   <= trans_end_addr;
       end else begin
         trans_mode_buf       <= trans_mode_buf;
         trans_start_addr_buf <= trans_start_addr_buf;
@@ -1289,11 +1289,24 @@ module spi (
         end
         TRANS_STATE_WRITE_DATA_2: begin
           if (!spi_master_core_trdy) begin
-            if (trans_ram_si < trans_end_addr_buf - 1) begin
-              trans_state <= TRANS_STATE_WRITE_DATA_0;
-            end else begin
-              trans_state <= TRANS_STATE_READ_MODE;
-            end
+            case (trans_mode_buf)
+              TRANS_MODE_RESET: begin
+                trans_state <= TRANS_STATE_READ_MODE;
+              end
+              TRANS_MODE_CONTINUES: begin
+                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                  trans_state <= TRANS_STATE_WRITE_DATA_0;
+                end else begin
+                  trans_state <= TRANS_STATE_READ_MODE;
+                end
+              end
+              TRANS_MODE_KEEP: begin
+                trans_state <= TRANS_STATE_READ_MODE;
+              end
+              default: begin
+                trans_state <= TRANS_STATE_READ_MODE;
+              end
+            endcase
           end else begin
             trans_state <= TRANS_STATE_WRITE_DATA_2;
           end
@@ -1340,8 +1353,12 @@ module spi (
           spi_trans_ram_we           <= 1'b0;
         end
         TRANS_STATE_READ_MODE: begin
-          trans_ram_ci               <= 32'h0;
-          trans_ram_si               <= trans_start_addr_buf;
+          trans_ram_ci <= 32'h0;
+          case (trans_mode_buf)
+            TRANS_MODE_CONTINUES: trans_ram_si <= {trans_start_addr_buf, 8'h0};
+            TRANS_MODE_KEEP:      trans_ram_si <= {trans_start_addr_buf, trans_end_addr_buf};
+            default:              trans_ram_si <= 32'h0;
+          endcase
 
           spi_master_core_address    <= 2'b0;
           spi_master_core_data_in    <= 32'h0;
@@ -1396,11 +1413,21 @@ module spi (
         TRANS_STATE_WRITE_DATA_2: begin
           trans_ram_ci <= 32'h0;
           if (!spi_master_core_trdy) begin
-            if (trans_ram_si < trans_end_addr_buf - 1) begin
-              trans_ram_si <= trans_ram_si + 1;
-            end else begin
-              trans_ram_si <= 32'h0;
-            end
+            case (trans_mode_buf)
+              TRANS_MODE_CONTINUES: begin
+                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                  trans_ram_si <= trans_ram_si + 1;
+                end else begin
+                  trans_ram_si <= 32'h0;
+                end
+              end
+              TRANS_MODE_KEEP: begin
+                trans_ram_si <= trans_ram_si;
+              end
+              default: begin
+                trans_ram_si <= 32'h0;
+              end
+            endcase
           end else begin
             trans_ram_si <= trans_ram_si;
           end
