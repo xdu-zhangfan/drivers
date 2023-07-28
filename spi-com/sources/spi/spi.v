@@ -26,7 +26,9 @@ module spi (
     input  [13 : 0] trans_ram_addr,
     input           trans_ram_we,
     input           trans_ram_ce,
-    input           trans_ram_clk
+    input           trans_ram_clk,
+
+    input trans_trig_int
 );
 
   wire [ 7 : 0] spi_config_ram_data_out;
@@ -1245,6 +1247,7 @@ module spi (
   localparam TRANS_MODE_RESET = 8'h00;
   localparam TRANS_MODE_CONTINUES = 8'h01;
   localparam TRANS_MODE_KEEP = 8'h02;
+  localparam TRANS_MODE_TRIG = 8'h03;
 
   reg [31 : 0] trans_ram_ci;
   reg [31 : 0] trans_ram_si;
@@ -1274,7 +1277,15 @@ module spi (
             TRANS_MODE_RESET:     trans_state <= TRANS_STATE_READ_MODE;
             TRANS_MODE_CONTINUES: trans_state <= TRANS_STATE_WRITE_DATA_0;
             TRANS_MODE_KEEP:      trans_state <= TRANS_STATE_WRITE_DATA_0;
-            default:              trans_state <= TRANS_STATE_READ_MODE;
+            TRANS_MODE_TRIG: begin
+              if (trans_trig_int) begin
+                trans_state <= TRANS_STATE_WRITE_DATA_0;
+              end else begin
+                trans_state <= TRANS_STATE_READ_MODE;
+              end
+            end
+
+            default: trans_state <= TRANS_STATE_READ_MODE;
           endcase
         end
         TRANS_STATE_WRITE_DATA_0: begin
@@ -1302,6 +1313,13 @@ module spi (
               end
               TRANS_MODE_KEEP: begin
                 trans_state <= TRANS_STATE_READ_MODE;
+              end
+              TRANS_MODE_TRIG: begin
+                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                  trans_state <= TRANS_STATE_WRITE_DATA_0;
+                end else begin
+                  trans_state <= TRANS_STATE_READ_MODE;
+                end
               end
               default: begin
                 trans_state <= TRANS_STATE_READ_MODE;
@@ -1423,6 +1441,13 @@ module spi (
               end
               TRANS_MODE_KEEP: begin
                 trans_ram_si <= trans_ram_si;
+              end
+              TRANS_MODE_TRIG: begin
+                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                  trans_ram_si <= trans_ram_si + 1;
+                end else begin
+                  trans_ram_si <= 32'h0;
+                end
               end
               default: begin
                 trans_ram_si <= 32'h0;

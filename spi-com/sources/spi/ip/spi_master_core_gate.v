@@ -1,5 +1,5 @@
 // Verilog netlist created by Tang Dynasty v5.6.71036
-// Wed Jul 26 15:16:49 2023
+// Fri Jul 28 15:23:59 2023
 
 `timescale 1ns / 1ps
 module spi_master_core
@@ -38,11 +38,11 @@ module spi_master_core
   output TRDY /* synthesis keep=true */ ;
 
   parameter Data_Width = 6'b001000;
-  parameter Divide_Factor = 16'b0000000000101000;
+  parameter Divide_Factor = 16'b0000000001000010;
   parameter Number_of_Select_Signals = 6'b000001;
-  parameter SS_n_Hold_Time = 16'b0000000011001000;
-  parameter SS_n_Setup_Time = 16'b0000000011001000;
-  // localparam Divide_Factor_Divided_by2 = 32'b00000000000000000000000000010100;
+  parameter SS_n_Hold_Time = 16'b0000000001010000;
+  parameter SS_n_Setup_Time = 16'b0000000001010000;
+  // localparam Divide_Factor_Divided_by2 = 32'b00000000000000000000000000100001;
   // localparam Idle0 = 3'b000;
   // localparam RL_SnEn = 3'b100;
   // localparam SLES_SnEn = 3'b011;
@@ -166,29 +166,26 @@ module spi_master_core
   wire al_454e2143;
   wire al_2516536d;
   wire al_a5353c11;
-  wire al_e43ffc64;
-  wire al_87bc4e8e;
-  wire al_ac5eee2b;
-  wire al_4f24644f;
-  wire al_d33627d1;
-  wire al_f995363;
-  wire al_ab032d5;
-  wire al_8a38679f;
-  wire al_c45e9530;
-  wire al_d3af5f22;
-  wire al_62d48691;
-  wire al_45c4209d;
-  wire al_68c69279;
-  wire al_959c7450;
-  wire al_99b41ae1;
-  wire al_860a25c6;
-  wire al_cdca520b;
-  wire al_e29e1352;
-  wire al_b4b58f08;
-  wire al_5e076fde;
-  wire al_90dab545;
-  wire al_ca80fcd0;
-  wire al_e4420455;
+  wire al_24f929b1;
+  wire al_687fe43a;
+  wire al_d3ae354f;
+  wire al_b5e07e5b;
+  wire al_e2fc5be6;
+  wire al_c0d928dd;
+  wire al_bdcdca07;
+  wire al_bf40e995;
+  wire al_b8a62983;
+  wire al_e88e109a;
+  wire al_2fbebb09;
+  wire al_21ad98f0;
+  wire al_b4fffb37;
+  wire al_f87dc346;
+  wire al_596fe018;
+  wire al_d33ed16a;
+  wire al_bb59b7ee;
+  wire al_996c54ed;
+  wire al_912fd5d7;
+  wire al_c746db64;
   wire al_cd6148b7;
   wire al_a4a005a4;
   wire al_7520e6dc;
@@ -284,7 +281,6 @@ module spi_master_core
   wire al_24baa884;
   wire al_3fa1d03f;
   wire al_7b6b0ee;
-  wire al_1b6ecd17;
   wire al_b1886426;
   wire al_e6f7ca9b;
   wire al_60a8082c;
@@ -352,6 +348,8 @@ module spi_master_core
   wire al_79d8bbdf;
   wire al_af0a8725;
   wire al_e2cbd6c9;
+  wire al_e8f24f8c;
+  wire al_daa73b28;
   wire al_b59876f4;
   wire al_2aeb35a7;
   wire al_8154ead5;
@@ -438,10 +436,7 @@ module spi_master_core
   wire al_2d9c4c87;
   wire al_1667705b;
   wire al_e11073c6;
-  wire al_cca4db32;
-  wire al_96c8991;
-  wire al_ca62814;
-  wire al_1faeedd;
+  wire al_5ab085c0;
   wire al_23c89952;
   wire al_7f3aef15 /* synthesis keep=true */ ;
   wire al_ca3ef18a;
@@ -473,7 +468,9 @@ module spi_master_core
   wire al_ee863648;
   wire al_f2956775;
   wire al_498e78e3;
-  wire al_19b23b44;
+  wire al_44ca8e6d;
+  wire al_8e3e1ce;
+  wire al_1c6aa62c;
   wire al_92e54c10;
   wire al_15abb2ba;
   wire al_56b9c8b8;
@@ -504,6 +501,7 @@ module spi_master_core
   wire al_9b91d581;
   wire al_a18dee71;
   wire al_97bd1504;
+  wire al_3edb010f;
   wire al_917c573e;
   wire al_1b5ba3c9;
   wire al_f0dd3830;
@@ -716,7 +714,6 @@ module spi_master_core
   wire al_a4583d00;
   wire al_ae0cac78;
   wire al_692ff205;
-  wire al_e1002fdb;
   wire al_f6d4eb4e /* synthesis keep=true */ ;
   wire al_fdf5fe64;
   wire al_e617f6c8;
@@ -1970,7 +1967,7 @@ module spi_master_core
     .INIT(4'hb))
     al_be6f6bf6 (
     .a(al_1365ef22),
-    .b(al_cdca520b),
+    .b(al_e8f24f8c),
     .o(al_62ac4ef6));
   AL_DFF_X al_a3e6216f (
     .ar(1'b0),
@@ -2031,225 +2028,208 @@ module spi_master_core
     al_e8ce362e (
     .i(al_2516536d),
     .o(al_a0cd0eec[0]));
+  AL_MAP_LUT6 #(
+    .EQN("(~F*~E*~D*~C*~B*~A)"),
+    .INIT(64'h0000000000000001))
+    al_e43ffc64 (
+    .a(al_699bbb1f),
+    .b(al_fbb525ac),
+    .c(al_31401316),
+    .d(al_e888467),
+    .e(al_d2626246),
+    .f(al_72fa9f86),
+    .o(al_687fe43a));
   AL_MAP_LUT4 #(
     .EQN("(~D*~C*~B*~A)"),
     .INIT(16'h0001))
-    al_24f929b1 (
-    .a(al_2459db3a),
-    .b(al_de9e5943),
-    .c(al_92e09353),
-    .d(al_2a39076a),
-    .o(al_e43ffc64));
-  AL_MAP_LUT2 #(
-    .EQN("(~B*~A)"),
-    .INIT(4'h1))
-    al_687fe43a (
-    .a(al_295a3e3d),
-    .b(al_decf8c0),
-    .o(al_87bc4e8e));
-  AL_MAP_LUT2 #(
-    .EQN("(~B*~A)"),
-    .INIT(4'h1))
-    al_d3ae354f (
-    .a(al_699bbb1f),
-    .b(al_fbb525ac),
-    .o(al_ac5eee2b));
-  AL_MAP_LUT2 #(
-    .EQN("(~B*~A)"),
-    .INIT(4'h1))
-    al_b5e07e5b (
-    .a(al_31401316),
-    .b(al_e888467),
-    .o(al_4f24644f));
+    al_87bc4e8e (
+    .a(al_e45e36a),
+    .b(al_bbcf3315),
+    .c(al_bef4d0d6),
+    .d(al_d56c96b0),
+    .o(al_d3ae354f));
   AL_MAP_LUT6 #(
-    .EQN("(~F*~E*~D*~C*B*A)"),
-    .INIT(64'h0000000000000008))
-    al_e2fc5be6 (
-    .a(al_ac5eee2b),
-    .b(al_4f24644f),
-    .c(al_e45e36a),
-    .d(al_bbcf3315),
-    .e(al_bef4d0d6),
-    .f(al_d56c96b0),
-    .o(al_d33627d1));
+    .EQN("(~F*~E*~D*~C*~B*~A)"),
+    .INIT(64'h0000000000000001))
+    al_ac5eee2b (
+    .a(al_c76a99cf[1]),
+    .b(al_c76a99cf[2]),
+    .c(al_c76a99cf[3]),
+    .d(al_c76a99cf[4]),
+    .e(al_c76a99cf[6]),
+    .f(al_c76a99cf[7]),
+    .o(al_b5e07e5b));
+  AL_MAP_LUT4 #(
+    .EQN("(~D*~C*~B*~A)"),
+    .INIT(16'h0001))
+    al_4f24644f (
+    .a(al_c76a99cf[12]),
+    .b(al_c76a99cf[13]),
+    .c(al_c76a99cf[14]),
+    .d(al_c76a99cf[15]),
+    .o(al_e2fc5be6));
+  AL_MAP_LUT4 #(
+    .EQN("(~D*~C*~B*~A)"),
+    .INIT(16'h0001))
+    al_d33627d1 (
+    .a(al_c76a99cf[8]),
+    .b(al_c76a99cf[9]),
+    .c(al_c76a99cf[10]),
+    .d(al_c76a99cf[11]),
+    .o(al_c0d928dd));
   AL_BUFKEEP #(
     .KEEP("IN"))
     al_d7376a84 (
     .i(al_a0cd0eec[0]),
     .o(al_a5353c11));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*~B*~A)"),
-    .INIT(16'h0001))
-    al_c0d928dd (
-    .a(al_c76a99cf[3]),
-    .b(al_c76a99cf[5]),
-    .c(al_c76a99cf[6]),
-    .d(al_c76a99cf[7]),
-    .o(al_f995363));
-  AL_MAP_LUT3 #(
-    .EQN("(~C*~B*A)"),
-    .INIT(8'h02))
-    al_bdcdca07 (
-    .a(al_f995363),
-    .b(al_c76a99cf[0]),
-    .c(al_c76a99cf[1]),
-    .o(al_ab032d5));
   AL_MAP_LUT2 #(
     .EQN("(~B*~A)"),
     .INIT(4'h1))
-    al_bf40e995 (
+    al_f995363 (
     .a(al_c63ec51e),
     .b(al_530fe31),
-    .o(al_8a38679f));
-  AL_MAP_LUT2 #(
-    .EQN("(B*A)"),
-    .INIT(4'h8))
-    al_b8a62983 (
-    .a(al_c76a99cf[2]),
-    .b(al_c76a99cf[4]),
-    .o(al_c45e9530));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*~B*~A)"),
-    .INIT(16'h0001))
-    al_e88e109a (
-    .a(al_15abb2ba),
-    .b(al_d98db9ce),
-    .c(al_5cf3eeb0),
-    .d(al_7a6e4623),
-    .o(al_d3af5f22));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*~B*~A)"),
-    .INIT(16'h0001))
-    al_2fbebb09 (
-    .a(al_c76a99cf[10]),
-    .b(al_c76a99cf[11]),
-    .c(al_c76a99cf[12]),
-    .d(al_c76a99cf[13]),
-    .o(al_62d48691));
-  AL_MAP_LUT3 #(
-    .EQN("(~C*B*A)"),
-    .INIT(8'h08))
-    al_21ad98f0 (
-    .a(al_8a38679f),
-    .b(al_c45e9530),
-    .c(al_28226662),
-    .o(al_45c4209d));
+    .o(al_bdcdca07));
   AL_MAP_LUT6 #(
-    .EQN("(~F*~E*~D*~C*B*A)"),
-    .INIT(64'h0000000000000008))
-    al_b4fffb37 (
-    .a(al_d3af5f22),
-    .b(al_62d48691),
-    .c(al_c76a99cf[8]),
-    .d(al_c76a99cf[9]),
-    .e(al_c76a99cf[14]),
-    .f(al_c76a99cf[15]),
-    .o(al_68c69279));
+    .EQN("(~F*~E*~D*~C*~B*A)"),
+    .INIT(64'h0000000000000002))
+    al_ab032d5 (
+    .a(al_bdcdca07),
+    .b(al_15abb2ba),
+    .c(al_d98db9ce),
+    .d(al_5cf3eeb0),
+    .e(al_7a6e4623),
+    .f(al_28226662),
+    .o(al_bf40e995));
+  AL_MAP_LUT4 #(
+    .EQN("(D*C*B*A)"),
+    .INIT(16'h8000))
+    al_8a38679f (
+    .a(al_e2fc5be6),
+    .b(al_c0d928dd),
+    .c(al_c76a99cf[0]),
+    .d(al_c76a99cf[5]),
+    .o(al_b8a62983));
   AL_MAP_LUT4 #(
     .EQN("(~D*~C*~B*~A)"),
     .INIT(16'h0001))
-    al_f87dc346 (
-    .a(al_93c49d13),
-    .b(al_70439eba),
-    .c(al_1b39f066),
-    .d(al_f5a00916),
-    .o(al_959c7450));
-  AL_MAP_LUT6 #(
-    .EQN("(~F*~E*~D*~C*~B*~A)"),
-    .INIT(64'h0000000000000001))
-    al_596fe018 (
+    al_c45e9530 (
     .a(al_c1ac1777),
     .b(al_c8213e67),
     .c(al_44b10f20),
     .d(al_eb588f24),
-    .e(al_45a6ff3),
-    .f(al_e9c5b87f),
-    .o(al_99b41ae1));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*~B*~A)"),
-    .INIT(16'h0001))
-    al_d33ed16a (
-    .a(al_8096572a),
-    .b(al_7bab2549),
-    .c(al_f3d3e13),
-    .d(al_a56f8439),
-    .o(al_860a25c6));
-  AL_MAP_LUT5 #(
-    .EQN("(~E*~D*C*B*A)"),
-    .INIT(32'h00000080))
-    al_bb59b7ee (
-    .a(al_99b41ae1),
-    .b(al_959c7450),
-    .c(al_860a25c6),
-    .d(al_85903d32),
-    .e(al_5efa4b64),
-    .o(al_cdca520b));
+    .o(al_e88e109a));
+  AL_MAP_LUT2 #(
+    .EQN("(~B*~A)"),
+    .INIT(4'h1))
+    al_d3af5f22 (
+    .a(al_93c49d13),
+    .b(al_70439eba),
+    .o(al_2fbebb09));
+  AL_MAP_LUT2 #(
+    .EQN("(~B*~A)"),
+    .INIT(4'h1))
+    al_62d48691 (
+    .a(al_1b39f066),
+    .b(al_f5a00916),
+    .o(al_21ad98f0));
   AL_MAP_LUT6 #(
-    .EQN("(F*~E*~D*~C*B*A)"),
-    .INIT(64'h0000000800000000))
-    al_996c54ed (
-    .a(al_e43ffc64),
-    .b(al_87bc4e8e),
-    .c(al_7b6b0ee),
-    .d(al_d2626246),
-    .e(al_72fa9f86),
-    .f(al_e617f6c8),
-    .o(al_e29e1352));
+    .EQN("(~F*~E*~D*~C*B*A)"),
+    .INIT(64'h0000000000000008))
+    al_45c4209d (
+    .a(al_2fbebb09),
+    .b(al_21ad98f0),
+    .c(al_45a6ff3),
+    .d(al_e9c5b87f),
+    .e(al_85903d32),
+    .f(al_5efa4b64),
+    .o(al_b4fffb37));
+  AL_MAP_LUT2 #(
+    .EQN("(B*~A)"),
+    .INIT(4'h4))
+    al_68c69279 (
+    .a(al_7b6b0ee),
+    .b(al_e617f6c8),
+    .o(al_f87dc346));
+  AL_MAP_LUT6 #(
+    .EQN("(~F*~E*~D*~C*B*A)"),
+    .INIT(64'h0000000000000008))
+    al_959c7450 (
+    .a(al_e88e109a),
+    .b(al_88614b51),
+    .c(al_8096572a),
+    .d(al_7bab2549),
+    .e(al_f3d3e13),
+    .f(al_a56f8439),
+    .o(al_596fe018));
   AL_MAP_LUT2 #(
     .EQN("(~B*A)"),
     .INIT(4'h2))
-    al_912fd5d7 (
+    al_99b41ae1 (
     .a(al_eb35874b),
     .b(al_723d884),
-    .o(al_b4b58f08));
-  AL_MAP_LUT5 #(
-    .EQN("(~E*(C*~((B*A))*~(D)+C*(B*A)*~(D)+~(C)*(B*A)*D+C*(B*A)*D))"),
-    .INIT(32'h000088f0))
-    al_c746db64 (
-    .a(al_e29e1352),
-    .b(al_d33627d1),
-    .c(al_e4420455),
-    .d(al_723d884),
-    .e(al_57299d00),
-    .o(al_5e076fde));
-  AL_MAP_LUT5 #(
-    .EQN("(E*D*~(C*B*A))"),
-    .INIT(32'h7f000000))
-    al_4f22ed91 (
-    .a(al_68c69279),
-    .b(al_ab032d5),
-    .c(al_45c4209d),
-    .d(al_723d884),
-    .e(al_57299d00),
-    .o(al_90dab545));
+    .o(al_d33ed16a));
   AL_MAP_LUT6 #(
-    .EQN("(E*~(F*A*~(D*C*B)))"),
-    .INIT(64'hd5550000ffff0000))
-    al_f8da18be (
-    .a(al_cdca520b),
-    .b(al_68c69279),
-    .c(al_ab032d5),
-    .d(al_45c4209d),
-    .e(al_b4b58f08),
-    .f(al_88614b51),
-    .o(al_ca80fcd0));
-  AL_MAP_LUT4 #(
-    .EQN("~(~A*~(~D*~(~C*~B)))"),
-    .INIT(16'haafe))
-    al_36d158bb (
-    .a(al_ca80fcd0),
-    .b(al_90dab545),
-    .c(al_5e076fde),
-    .d(al_eb35874b),
-    .o(al_2516536d));
-  AL_MAP_LUT3 #(
-    .EQN("(C*~B*~A)"),
-    .INIT(8'h10))
-    al_602ffbaf (
+    .EQN("(F*~(C*B*~(E*D*A)))"),
+    .INIT(64'hbf3f3f3f00000000))
+    al_860a25c6 (
+    .a(al_b8a62983),
+    .b(al_596fe018),
+    .c(al_b4fffb37),
+    .d(al_bf40e995),
+    .e(al_b5e07e5b),
+    .f(al_d33ed16a),
+    .o(al_bb59b7ee));
+  AL_MAP_LUT5 #(
+    .EQN("(~E*~D*C*~B*~A)"),
+    .INIT(32'h00000010))
+    al_cdca520b (
     .a(Address[1]),
     .b(Address[0]),
     .c(Write),
-    .o(al_e4420455));
+    .d(al_723d884),
+    .e(al_57299d00),
+    .o(al_996c54ed));
+  AL_MAP_LUT4 #(
+    .EQN("(D*~(C*B*A))"),
+    .INIT(16'h7f00))
+    al_e29e1352 (
+    .a(al_b8a62983),
+    .b(al_bf40e995),
+    .c(al_b5e07e5b),
+    .d(al_57299d00),
+    .o(al_912fd5d7));
+  AL_MAP_LUT5 #(
+    .EQN("(~E*D*C*B*A)"),
+    .INIT(32'h00008000))
+    al_b4b58f08 (
+    .a(al_24f929b1),
+    .b(al_687fe43a),
+    .c(al_d3ae354f),
+    .d(al_f87dc346),
+    .e(al_57299d00),
+    .o(al_c746db64));
+  AL_MAP_LUT6 #(
+    .EQN("~(~A*~(~E*~(~D*~(F*~(~C*~B)))))"),
+    .INIT(64'haaaafffeaaaaffaa))
+    al_5e076fde (
+    .a(al_bb59b7ee),
+    .b(al_912fd5d7),
+    .c(al_c746db64),
+    .d(al_996c54ed),
+    .e(al_eb35874b),
+    .f(al_723d884),
+    .o(al_2516536d));
+  AL_MAP_LUT6 #(
+    .EQN("(~F*~E*~D*~C*~B*~A)"),
+    .INIT(64'h0000000000000001))
+    al_602ffbaf (
+    .a(al_295a3e3d),
+    .b(al_decf8c0),
+    .c(al_2459db3a),
+    .d(al_de9e5943),
+    .e(al_92e09353),
+    .f(al_2a39076a),
+    .o(al_24f929b1));
   AL_BUFKEEP #(
     .KEEP("OUT"))
     al_edbf740b (
@@ -2278,20 +2258,19 @@ module spi_master_core
     .EQN("(C*B*A)"),
     .INIT(8'h80))
     al_aa961c13 (
-    .a(al_68c69279),
-    .b(al_ab032d5),
-    .c(al_45c4209d),
+    .a(al_b8a62983),
+    .b(al_bf40e995),
+    .c(al_b5e07e5b),
     .o(al_1365ef22));
-  AL_MAP_LUT6 #(
-    .EQN("(~(A)*C*~(D)*~(E)*~((F*B))+A*C*~(D)*~(E)*~((F*B))+~(A)*C*~(D)*E*~((F*B))+A*C*~(D)*E*~((F*B))+A*~(C)*D*E*~((F*B))+A*C*~(D)*~(E)*(F*B)+A*C*~(D)*E*(F*B)+A*~(C)*D*E*(F*B))"),
-    .INIT(64'h0ab000b00af000f0))
+  AL_MAP_LUT5 #(
+    .EQN("~(~B*~(E*D*~C*A))"),
+    .INIT(32'hcecccccc))
     al_dc8f528 (
     .a(al_1365ef22),
-    .b(al_cdca520b),
+    .b(al_bb59b7ee),
     .c(al_eb35874b),
     .d(al_723d884),
     .e(al_57299d00),
-    .f(al_88614b51),
     .o(al_1bdde3ba));
   AL_BUFKEEP #(
     .KEEP("IN"))
@@ -3077,12 +3056,12 @@ module spi_master_core
     .e(al_b640f031),
     .o(al_cc268f1a[5]));
   AL_MAP_LUT4 #(
-    .EQN("~(D*~((B*A))*~(C)+D*(B*A)*~(C)+~(D)*(B*A)*C+D*(B*A)*C)"),
-    .INIT(16'h707f))
+    .EQN("~(D*~((C*A))*~(B)+D*(C*A)*~(B)+~(D)*(C*A)*B+D*(C*A)*B)"),
+    .INIT(16'h4c7f))
     al_4d0e2766 (
-    .a(al_96c8991),
-    .b(al_ca62814),
-    .c(al_a6ad7f88),
+    .a(al_3edb010f),
+    .b(al_a6ad7f88),
+    .c(al_24baa884),
     .d(al_a1beff56),
     .o(al_23c89952));
   AL_MAP_LUT5 #(
@@ -3162,24 +3141,24 @@ module spi_master_core
     .c(al_498e78e3),
     .o(al_41a3c85d[15]));
   AL_MAP_LUT3 #(
-    .EQN("(~(A)*B*~(C)+A*B*~(C)+A*~(B)*C)"),
-    .INIT(8'h2c))
+    .EQN("(~(A)*~(B)*~(C)+A*~(B)*~(C)+A*~(B)*C+~(A)*B*C+A*B*C)"),
+    .INIT(8'he3))
     al_7bf5a955 (
     .a(al_e1ebfa0b[1]),
     .b(al_ee863648),
     .c(al_498e78e3),
     .o(al_41a3c85d[1]));
   AL_MAP_LUT3 #(
-    .EQN("(~(A)*B*~(C)+A*B*~(C)+A*~(B)*C)"),
-    .INIT(8'h2c))
+    .EQN("(C*~B*A)"),
+    .INIT(8'h20))
     al_ce0a79a0 (
     .a(al_e1ebfa0b[2]),
     .b(al_ee863648),
     .c(al_498e78e3),
     .o(al_41a3c85d[2]));
   AL_MAP_LUT3 #(
-    .EQN("(~(A)*~(B)*~(C)+A*~(B)*~(C)+A*~(B)*C+~(A)*B*C+A*B*C)"),
-    .INIT(8'he3))
+    .EQN("(C*~B*A)"),
+    .INIT(8'h20))
     al_72112b47 (
     .a(al_e1ebfa0b[3]),
     .b(al_ee863648),
@@ -3194,16 +3173,16 @@ module spi_master_core
     .c(al_498e78e3),
     .o(al_41a3c85d[4]));
   AL_MAP_LUT3 #(
-    .EQN("~(C*~B*~A)"),
-    .INIT(8'hef))
+    .EQN("(C*~B*A)"),
+    .INIT(8'h20))
     al_a79ad5ea (
     .a(al_e1ebfa0b[5]),
     .b(al_ee863648),
     .c(al_498e78e3),
     .o(al_41a3c85d[5]));
   AL_MAP_LUT3 #(
-    .EQN("(C*~B*A)"),
-    .INIT(8'h20))
+    .EQN("~(C*~B*~A)"),
+    .INIT(8'hef))
     al_454c6667 (
     .a(al_e1ebfa0b[6]),
     .b(al_ee863648),
@@ -3258,37 +3237,46 @@ module spi_master_core
     al_b4a9e642 (
     .i(al_f2956775),
     .o(al_29e55da3[0]));
-  AL_MAP_LUT5 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)+A*~(B)*C*~(D)*~(E)+~(A)*B*C*~(D)*~(E)+A*B*C*~(D)*~(E)+~(A)*~(B)*~(C)*D*~(E)+~(A)*B*~(C)*D*~(E)+~(A)*~(B)*C*D*~(E)+~(A)*B*C*D*~(E)+~(A)*~(B)*~(C)*~(D)*E+~(A)*~(B)*C*~(D)*E)"),
-    .INIT(32'h001155f0))
-    al_8e3e1ce (
-    .a(al_1365ef22),
-    .b(al_19b23b44),
-    .c(al_1b6ecd17),
-    .d(al_f03665b7),
-    .e(al_dcaf690),
+  AL_MAP_LUT3 #(
+    .EQN("(~C*~B*A)"),
+    .INIT(8'h02))
+    al_24802f91 (
+    .a(al_8e3e1ce),
+    .b(al_c76a99cf[0]),
+    .c(al_c76a99cf[5]),
+    .o(al_1c6aa62c));
+  AL_MAP_LUT6 #(
+    .EQN("(~(A)*~(B)*(D*C)*~(E)*~(F)+A*~(B)*(D*C)*~(E)*~(F)+~(A)*B*(D*C)*~(E)*~(F)+A*B*(D*C)*~(E)*~(F)+~(A)*~(B)*~((D*C))*E*~(F)+A*~(B)*~((D*C))*E*~(F)+~(A)*~(B)*(D*C)*E*~(F)+A*~(B)*(D*C)*E*~(F)+~(A)*~(B)*~((D*C))*~(E)*F+~(A)*~(B)*(D*C)*~(E)*F)"),
+    .INIT(64'h000011113333f000))
+    al_95791ef1 (
+    .a(al_1c6aa62c),
+    .b(al_1365ef22),
+    .c(al_44ca8e6d),
+    .d(al_f87dc346),
+    .e(al_f03665b7),
+    .f(al_dcaf690),
     .o(al_f2956775));
   AL_BUFKEEP #(
     .KEEP("IN"))
     al_33d4329d (
     .i(al_29e55da3[0]),
     .o(al_498e78e3));
-  AL_MAP_LUT2 #(
-    .EQN("(B*A)"),
-    .INIT(4'h8))
+  AL_MAP_LUT3 #(
+    .EQN("(C*B*A)"),
+    .INIT(8'h80))
     al_8214315 (
-    .a(al_e29e1352),
-    .b(al_d33627d1),
-    .o(al_1b6ecd17));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*B*A)"),
-    .INIT(16'h0008))
-    al_44ca8e6d (
-    .a(al_ab032d5),
-    .b(al_96c8991),
-    .c(al_c76a99cf[2]),
-    .d(al_c76a99cf[4]),
-    .o(al_19b23b44));
+    .a(al_24f929b1),
+    .b(al_687fe43a),
+    .c(al_d3ae354f),
+    .o(al_44ca8e6d));
+  AL_MAP_LUT3 #(
+    .EQN("(C*B*A)"),
+    .INIT(8'h80))
+    al_19b23b44 (
+    .a(al_b5e07e5b),
+    .b(al_e2fc5be6),
+    .c(al_c0d928dd),
+    .o(al_8e3e1ce));
   AL_BUFKEEP #(
     .KEEP("OUT"))
     al_b4e7aae (
@@ -3299,16 +3287,15 @@ module spi_master_core
     al_6e33e7da (
     .i(al_29e55da3[1]),
     .o(al_ee863648));
-  AL_MAP_LUT6 #(
-    .EQN("(F*~E*~D*~C*B*A)"),
-    .INIT(64'h0000000800000000))
-    al_bc029707 (
-    .a(al_ab032d5),
-    .b(al_96c8991),
-    .c(al_c76a99cf[2]),
-    .d(al_c76a99cf[4]),
-    .e(al_f03665b7),
-    .f(al_dcaf690),
+  AL_MAP_LUT5 #(
+    .EQN("(E*~D*~C*~B*A)"),
+    .INIT(32'h00020000))
+    al_89b0a16 (
+    .a(al_8e3e1ce),
+    .b(al_c76a99cf[0]),
+    .c(al_c76a99cf[5]),
+    .d(al_f03665b7),
+    .e(al_dcaf690),
     .o(al_b3394b65));
   AL_BUFKEEP #(
     .KEEP("OUT"))
@@ -3404,7 +3391,7 @@ module spi_master_core
     .INIT(32'hff3c78ff))
     al_bd78973 (
     .a(al_917c573e),
-    .b(al_8a38679f),
+    .b(al_bdcdca07),
     .c(al_28226662),
     .d(al_3f39b220),
     .e(al_6639dfe0),
@@ -3414,7 +3401,7 @@ module spi_master_core
     .INIT(64'hfffff03cf078ffff))
     al_98833074 (
     .a(al_917c573e),
-    .b(al_8a38679f),
+    .b(al_bdcdca07),
     .c(al_7a6e4623),
     .d(al_28226662),
     .e(al_3f39b220),
@@ -3441,20 +3428,21 @@ module spi_master_core
     .e(al_3f39b220),
     .f(al_6639dfe0),
     .o(al_d3f6dbc1[5]));
-  AL_MAP_LUT4 #(
-    .EQN("(B*A*~(D@C))"),
-    .INIT(16'h8008))
+  AL_MAP_LUT5 #(
+    .EQN("(C*B*A*~(E@D))"),
+    .INIT(32'h80000080))
     al_73e90a63 (
-    .a(al_ab032d5),
-    .b(al_96c8991),
-    .c(al_c76a99cf[2]),
-    .d(al_c76a99cf[4]),
+    .a(al_b5e07e5b),
+    .b(al_e2fc5be6),
+    .c(al_c0d928dd),
+    .d(al_c76a99cf[0]),
+    .e(al_c76a99cf[5]),
     .o(al_917c573e));
   AL_MAP_LUT3 #(
     .EQN("(~C*~B*A)"),
     .INIT(8'h02))
     al_bef95252 (
-    .a(al_8a38679f),
+    .a(al_bdcdca07),
     .b(al_7a6e4623),
     .c(al_28226662),
     .o(al_9b91d581));
@@ -3467,11 +3455,11 @@ module spi_master_core
     .c(al_5cf3eeb0),
     .o(al_a18dee71));
   AL_MAP_LUT5 #(
-    .EQN("(A*B*~(C)*D*~(E)+~(A)*~(B)*C*D*~(E)+A*~(B)*C*D*~(E)+~(A)*B*C*D*~(E)+~(A)*B*~(C)*~(D)*E+A*B*~(C)*~(D)*E+~(A)*~(B)*C*~(D)*E+A*~(B)*C*~(D)*E)"),
-    .INIT(32'h003c7800))
+    .EQN("(A*B*~(C)*D*~(E)+~(A)*~(B)*C*D*~(E)+A*~(B)*C*D*~(E)+~(A)*B*C*D*~(E)+A*~(B)*~(C)*~(D)*E+A*B*~(C)*~(D)*E+~(A)*~(B)*C*~(D)*E+~(A)*B*C*~(D)*E)"),
+    .INIT(32'h005a7800))
     al_dcae9cdd (
-    .a(al_917c573e),
-    .b(al_a18dee71),
+    .a(al_a18dee71),
+    .b(al_917c573e),
     .c(al_15abb2ba),
     .d(al_3f39b220),
     .e(al_6639dfe0),
@@ -3506,13 +3494,14 @@ module spi_master_core
     al_f4c6216d (
     .i(al_f5fa2924[0]),
     .o(al_6639dfe0));
-  AL_MAP_LUT3 #(
-    .EQN("(~C*~B*A)"),
-    .INIT(8'h02))
+  AL_MAP_LUT4 #(
+    .EQN("(~D*~C*B*A)"),
+    .INIT(16'h0008))
     al_d2d860f9 (
-    .a(al_1b6ecd17),
-    .b(al_97963f03),
-    .c(al_5283e9b1),
+    .a(al_44ca8e6d),
+    .b(al_f87dc346),
+    .c(al_97963f03),
+    .d(al_5283e9b1),
     .o(al_896690e5));
   AL_BUFKEEP #(
     .KEEP("OUT"))
@@ -3542,22 +3531,23 @@ module spi_master_core
     al_ab4f2019 (
     .i(al_ef162b5b),
     .o(al_a1beff56));
-  AL_MAP_LUT3 #(
-    .EQN("(B*~(A)*~(C)+B*A*~(C)+~(B)*A*C+B*A*C)"),
-    .INIT(8'hac))
+  AL_MAP_LUT4 #(
+    .EQN("((C*B)*~(A)*~(D)+(C*B)*A*~(D)+~((C*B))*A*D+(C*B)*A*D)"),
+    .INIT(16'haac0))
     al_3bea8aa8 (
-    .a(al_19b23b44),
-    .b(al_1b6ecd17),
-    .c(al_24baa884),
+    .a(al_1c6aa62c),
+    .b(al_44ca8e6d),
+    .c(al_f87dc346),
+    .d(al_24baa884),
     .o(al_493968be));
   AL_MAP_LUT6 #(
-    .EQN("(~(E@(~F*~(B*A)))*~(C)*~(D)+~(E@(~F*~(B*A)))*C*~(D)+~(~(E@(~F*~(B*A))))*C*D+~(E@(~F*~(B*A)))*C*D)"),
-    .INIT(64'hf000f0fff077f088))
+    .EQN("(~(E@(~F*~(D*A)))*~(B)*~(C)+~(E@(~F*~(D*A)))*B*~(C)+~(~(E@(~F*~(D*A))))*B*C+~(E@(~F*~(D*A)))*B*C)"),
+    .INIT(64'hc0c0cfcfc5cfcac0))
     al_4af2a1a (
-    .a(al_96c8991),
-    .b(al_ca62814),
-    .c(al_62b5a80b),
-    .d(al_97bd1504),
+    .a(al_3edb010f),
+    .b(al_62b5a80b),
+    .c(al_97bd1504),
+    .d(al_24baa884),
     .e(al_7bc079dc),
     .f(al_a1beff56),
     .o(al_1b5ba3c9));
@@ -3662,8 +3652,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_c76a99cf[0]));
   AL_DFF_X al_f634a973 (
-    .ar(~Rst_n),
-    .as(1'b0),
+    .ar(1'b0),
+    .as(~Rst_n),
     .clk(Sys_Clk),
     .d(al_41a3c85d[1]),
     .en(1'b1),
@@ -3680,8 +3670,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_c76a99cf[2]));
   AL_DFF_X al_366e08e6 (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_41a3c85d[3]),
     .en(1'b1),
@@ -3698,8 +3688,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_c76a99cf[4]));
   AL_DFF_X al_2754f90e (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_41a3c85d[5]),
     .en(1'b1),
@@ -3707,8 +3697,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_c76a99cf[5]));
   AL_DFF_X al_685a28c4 (
-    .ar(~Rst_n),
-    .as(1'b0),
+    .ar(1'b0),
+    .as(~Rst_n),
     .clk(Sys_Clk),
     .d(al_41a3c85d[6]),
     .en(1'b1),
@@ -4505,15 +4495,15 @@ module spi_master_core
     .b(al_5ee3e9f8),
     .o(al_4cc62f6e[31]));
   AL_MAP_LUT2 #(
-    .EQN("~(B*~A)"),
-    .INIT(4'hb))
+    .EQN("(B*A)"),
+    .INIT(4'h8))
     al_5243fa49 (
     .a(al_c8d55f46[3]),
     .b(al_5ee3e9f8),
     .o(al_4cc62f6e[3]));
   AL_MAP_LUT2 #(
-    .EQN("(B*A)"),
-    .INIT(4'h8))
+    .EQN("~(B*~A)"),
+    .INIT(4'hb))
     al_3c1c40c3 (
     .a(al_c8d55f46[4]),
     .b(al_5ee3e9f8),
@@ -4533,8 +4523,8 @@ module spi_master_core
     .b(al_5ee3e9f8),
     .o(al_4cc62f6e[6]));
   AL_MAP_LUT2 #(
-    .EQN("~(B*~A)"),
-    .INIT(4'hb))
+    .EQN("(B*A)"),
+    .INIT(4'h8))
     al_95a88bc2 (
     .a(al_c8d55f46[7]),
     .b(al_5ee3e9f8),
@@ -4593,8 +4583,8 @@ module spi_master_core
     .INIT(16'h3faa))
     al_31de7cff (
     .a(al_1365ef22),
-    .b(al_b7fd808a),
-    .c(al_cdca520b),
+    .b(al_e8f24f8c),
+    .c(al_b7fd808a),
     .d(al_a985132b),
     .o(al_a2c0b715));
   AL_BUFKEEP #(
@@ -4868,8 +4858,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_ac16b76b));
   AL_DFF_X al_add9ed48 (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_4cc62f6e[3]),
     .en(1'b1),
@@ -4877,8 +4867,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_4a14bad5));
   AL_DFF_X al_fa6a4a3b (
-    .ar(~Rst_n),
-    .as(1'b0),
+    .ar(1'b0),
+    .as(~Rst_n),
     .clk(Sys_Clk),
     .d(al_4cc62f6e[4]),
     .en(1'b1),
@@ -4904,8 +4894,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_82a92629));
   AL_DFF_X al_1f7f1530 (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_4cc62f6e[7]),
     .en(1'b1),
@@ -5637,15 +5627,15 @@ module spi_master_core
     .b(al_b6fcb21e),
     .o(al_2a583e39[31]));
   AL_MAP_LUT2 #(
-    .EQN("~(B*~A)"),
-    .INIT(4'hb))
+    .EQN("(B*A)"),
+    .INIT(4'h8))
     al_4bf6ad53 (
     .a(al_a03fae3c[3]),
     .b(al_b6fcb21e),
     .o(al_2a583e39[3]));
   AL_MAP_LUT2 #(
-    .EQN("(B*A)"),
-    .INIT(4'h8))
+    .EQN("~(B*~A)"),
+    .INIT(4'hb))
     al_e47c5c1c (
     .a(al_a03fae3c[4]),
     .b(al_b6fcb21e),
@@ -5665,8 +5655,8 @@ module spi_master_core
     .b(al_b6fcb21e),
     .o(al_2a583e39[6]));
   AL_MAP_LUT2 #(
-    .EQN("~(B*~A)"),
-    .INIT(4'hb))
+    .EQN("(B*A)"),
+    .INIT(4'h8))
     al_1ba62ad4 (
     .a(al_a03fae3c[7]),
     .b(al_b6fcb21e),
@@ -5710,33 +5700,22 @@ module spi_master_core
     .i(al_bee89869),
     .o(al_d2527372));
   AL_MAP_LUT6 #(
-    .EQN("(~F*~E*~D*~C*~B*~A)"),
-    .INIT(64'h0000000000000001))
-    al_5f9624ea (
-    .a(al_40668652),
-    .b(al_82219977),
-    .c(al_96d9dd8e),
-    .d(al_13df0a94),
-    .e(al_30efcacb),
-    .f(al_b29e7921),
-    .o(al_692ff205));
-  AL_MAP_LUT6 #(
     .EQN("(~F*~E*~D*~C*B*A)"),
     .INIT(64'h0000000000000008))
-    al_2f1018ea (
-    .a(al_ae0cac78),
-    .b(al_692ff205),
+    al_5f9624ea (
+    .a(al_a4583d00),
+    .b(al_ae0cac78),
     .c(al_9d8500d6),
     .d(al_c87f203a),
     .e(al_ab6a1117),
     .f(al_69455d9),
-    .o(al_e1002fdb));
+    .o(al_692ff205));
   AL_MAP_LUT4 #(
     .EQN("~(~C*~((B*A))*~(D)+~C*(B*A)*~(D)+~(~C)*(B*A)*D+~C*(B*A)*D)"),
     .INIT(16'h77f0))
-    al_16296ee8 (
-    .a(al_a4583d00),
-    .b(al_e1002fdb),
+    al_2f1018ea (
+    .a(al_44ca8e6d),
+    .b(al_692ff205),
     .c(al_c5576ea4),
     .d(al_e915e8c1),
     .o(al_bee89869));
@@ -5745,26 +5724,27 @@ module spi_master_core
     al_8c7d0ff0 (
     .i(al_d2527372),
     .o(al_b6fcb21e));
-  AL_MAP_LUT5 #(
-    .EQN("(~E*~D*C*B*A)"),
-    .INIT(32'h00000080))
-    al_455ca809 (
-    .a(al_d33627d1),
-    .b(al_e43ffc64),
-    .c(al_87bc4e8e),
-    .d(al_d2626246),
-    .e(al_72fa9f86),
-    .o(al_a4583d00));
   AL_MAP_LUT6 #(
     .EQN("(~F*~E*~D*~C*~B*~A)"),
     .INIT(64'h0000000000000001))
-    al_b7f7e30a (
+    al_455ca809 (
     .a(al_edaa46ac),
     .b(al_f4db75f7),
     .c(al_96ccf4c7),
     .d(al_310e589b),
     .e(al_17dd8314),
     .f(al_a669dfd2),
+    .o(al_a4583d00));
+  AL_MAP_LUT6 #(
+    .EQN("(~F*~E*~D*~C*~B*~A)"),
+    .INIT(64'h0000000000000001))
+    al_b7f7e30a (
+    .a(al_40668652),
+    .b(al_82219977),
+    .c(al_96d9dd8e),
+    .d(al_13df0a94),
+    .e(al_30efcacb),
+    .f(al_b29e7921),
     .o(al_ae0cac78));
   AL_DFF_X al_c40cda84 (
     .ar(~Rst_n),
@@ -6010,8 +5990,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_bb33086d));
   AL_DFF_X al_46c9c0c2 (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_2a583e39[3]),
     .en(1'b1),
@@ -6019,8 +5999,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_fa7819bd));
   AL_DFF_X al_dd87b4bd (
-    .ar(~Rst_n),
-    .as(1'b0),
+    .ar(1'b0),
+    .as(~Rst_n),
     .clk(Sys_Clk),
     .d(al_2a583e39[4]),
     .en(1'b1),
@@ -6046,8 +6026,8 @@ module spi_master_core
     .ss(1'b0),
     .q(al_622fecac));
   AL_DFF_X al_ef81b053 (
-    .ar(1'b0),
-    .as(~Rst_n),
+    .ar(~Rst_n),
+    .as(1'b0),
     .clk(Sys_Clk),
     .d(al_2a583e39[7]),
     .en(1'b1),
@@ -6287,7 +6267,7 @@ module spi_master_core
     .EQN("~(~B*A)"),
     .INIT(4'hd))
     al_b671e3e1 (
-    .a(al_a4583d00),
+    .a(al_44ca8e6d),
     .b(al_7b6b0ee),
     .o(al_c84e2927));
   AL_DFF_X al_25112033 (
@@ -7019,15 +6999,34 @@ module spi_master_core
     .sr(1'b0),
     .ss(1'b0),
     .q(TOE));
-  AL_MAP_LUT5 #(
-    .EQN("~(~(D*~C)*~(E*B*~A))"),
-    .INIT(32'h4f440f00))
+  AL_MAP_LUT6 #(
+    .EQN("(~F*~E*~D*~C*B*A)"),
+    .INIT(64'h0000000000000008))
     al_a5b333dd (
-    .a(al_1365ef22),
-    .b(al_cdca520b),
-    .c(al_e4420455),
+    .a(al_b4fffb37),
+    .b(al_e88e109a),
+    .c(al_8096572a),
+    .d(al_7bab2549),
+    .e(al_f3d3e13),
+    .f(al_a56f8439),
+    .o(al_e8f24f8c));
+  AL_MAP_LUT4 #(
+    .EQN("(D*~(C*~B*~A))"),
+    .INIT(16'hef00))
+    al_fcaec577 (
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Write),
     .d(TRDY),
-    .e(al_88614b51),
+    .o(al_daa73b28));
+  AL_MAP_LUT4 #(
+    .EQN("~(~C*~(D*B*~A))"),
+    .INIT(16'hf4f0))
+    al_415b75c9 (
+    .a(al_1365ef22),
+    .b(al_e8f24f8c),
+    .c(al_daa73b28),
+    .d(al_88614b51),
     .o(al_e2cbd6c9));
   AL_DFF_X al_a88036ee (
     .ar(1'b0),
@@ -7363,299 +7362,363 @@ module spi_master_core
     al_825d29e (
     .i(al_8b32a13a[9]),
     .o(al_5dadb41f));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_be41f164 (
-    .a(al_e4420455),
-    .b(Data_to_IP[0]),
-    .c(TRDY),
-    .d(al_9d1d7c4),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[0]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_9d1d7c4),
     .o(al_5453b25d[0]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_18f14e81 (
-    .a(al_e4420455),
-    .b(Data_to_IP[10]),
-    .c(TRDY),
-    .d(al_fb3da37c),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[10]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_fb3da37c),
     .o(al_5453b25d[10]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_8ce7d1cd (
-    .a(al_e4420455),
-    .b(Data_to_IP[11]),
-    .c(TRDY),
-    .d(al_da189355),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[11]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_da189355),
     .o(al_5453b25d[11]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_33dfb455 (
-    .a(al_e4420455),
-    .b(Data_to_IP[12]),
-    .c(TRDY),
-    .d(al_3b2750ce),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[12]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_3b2750ce),
     .o(al_5453b25d[12]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_cc2d7b66 (
-    .a(al_e4420455),
-    .b(Data_to_IP[13]),
-    .c(TRDY),
-    .d(al_c1746477),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[13]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_c1746477),
     .o(al_5453b25d[13]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_222ea407 (
-    .a(al_e4420455),
-    .b(Data_to_IP[14]),
-    .c(TRDY),
-    .d(al_8dff35eb),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[14]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_8dff35eb),
     .o(al_5453b25d[14]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_799224f6 (
-    .a(al_e4420455),
-    .b(Data_to_IP[15]),
-    .c(TRDY),
-    .d(al_295e14f3),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[15]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_295e14f3),
     .o(al_5453b25d[15]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_a784d3f2 (
-    .a(al_e4420455),
-    .b(Data_to_IP[16]),
-    .c(TRDY),
-    .d(al_8200c44f),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[16]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_8200c44f),
     .o(al_5453b25d[16]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_af31e967 (
-    .a(al_e4420455),
-    .b(Data_to_IP[17]),
-    .c(TRDY),
-    .d(al_6b9fbc23),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[17]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_6b9fbc23),
     .o(al_5453b25d[17]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_8859aa08 (
-    .a(al_e4420455),
-    .b(Data_to_IP[18]),
-    .c(TRDY),
-    .d(al_a3548b90),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[18]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_a3548b90),
     .o(al_5453b25d[18]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_a66212dc (
-    .a(al_e4420455),
-    .b(Data_to_IP[19]),
-    .c(TRDY),
-    .d(al_a5399dcd),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[19]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_a5399dcd),
     .o(al_5453b25d[19]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_2d6a76e7 (
-    .a(al_e4420455),
-    .b(Data_to_IP[1]),
-    .c(TRDY),
-    .d(al_f9b9b042),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[1]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_f9b9b042),
     .o(al_5453b25d[1]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_c734046c (
-    .a(al_e4420455),
-    .b(Data_to_IP[20]),
-    .c(TRDY),
-    .d(al_1d89dce0),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[20]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_1d89dce0),
     .o(al_5453b25d[20]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_f6f65f6a (
-    .a(al_e4420455),
-    .b(Data_to_IP[21]),
-    .c(TRDY),
-    .d(al_d44487ab),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[21]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_d44487ab),
     .o(al_5453b25d[21]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_e3976bd4 (
-    .a(al_e4420455),
-    .b(Data_to_IP[22]),
-    .c(TRDY),
-    .d(al_c8daba55),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[22]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_c8daba55),
     .o(al_5453b25d[22]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_2b11c209 (
-    .a(al_e4420455),
-    .b(Data_to_IP[23]),
-    .c(TRDY),
-    .d(al_dcb0bc),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[23]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_dcb0bc),
     .o(al_5453b25d[23]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_8c48a264 (
-    .a(al_e4420455),
-    .b(Data_to_IP[24]),
-    .c(TRDY),
-    .d(al_7241f374),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[24]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_7241f374),
     .o(al_5453b25d[24]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_f94a0888 (
-    .a(al_e4420455),
-    .b(Data_to_IP[25]),
-    .c(TRDY),
-    .d(al_a9d4fed0),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[25]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_a9d4fed0),
     .o(al_5453b25d[25]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_6bd3825a (
-    .a(al_e4420455),
-    .b(Data_to_IP[26]),
-    .c(TRDY),
-    .d(al_51b775d6),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[26]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_51b775d6),
     .o(al_5453b25d[26]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_b6b17d8a (
-    .a(al_e4420455),
-    .b(Data_to_IP[27]),
-    .c(TRDY),
-    .d(al_b7b08eae),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[27]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_b7b08eae),
     .o(al_5453b25d[27]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_55831f24 (
-    .a(al_e4420455),
-    .b(Data_to_IP[28]),
-    .c(TRDY),
-    .d(al_799444bb),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[28]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_799444bb),
     .o(al_5453b25d[28]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_495a696f (
-    .a(al_e4420455),
-    .b(Data_to_IP[29]),
-    .c(TRDY),
-    .d(al_6fef45c5),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[29]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_6fef45c5),
     .o(al_5453b25d[29]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_fbea7838 (
-    .a(al_e4420455),
-    .b(Data_to_IP[2]),
-    .c(TRDY),
-    .d(al_467b626f),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[2]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_467b626f),
     .o(al_5453b25d[2]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_e8bc41b7 (
-    .a(al_e4420455),
-    .b(Data_to_IP[30]),
-    .c(TRDY),
-    .d(al_b61d8710),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[30]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_b61d8710),
     .o(al_5453b25d[30]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_37646998 (
-    .a(al_e4420455),
-    .b(Data_to_IP[31]),
-    .c(TRDY),
-    .d(al_2aeb35a7),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[31]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_2aeb35a7),
     .o(al_5453b25d[31]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_5bc72592 (
-    .a(al_e4420455),
-    .b(Data_to_IP[3]),
-    .c(TRDY),
-    .d(al_5422678),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[3]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_5422678),
     .o(al_5453b25d[3]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_fbb1235f (
-    .a(al_e4420455),
-    .b(Data_to_IP[4]),
-    .c(TRDY),
-    .d(al_388518b3),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[4]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_388518b3),
     .o(al_5453b25d[4]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_c41c7052 (
-    .a(al_e4420455),
-    .b(Data_to_IP[5]),
-    .c(TRDY),
-    .d(al_4efe4774),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[5]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_4efe4774),
     .o(al_5453b25d[5]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_97dd5fa4 (
-    .a(al_e4420455),
-    .b(Data_to_IP[6]),
-    .c(TRDY),
-    .d(al_3e0a3d99),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[6]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_3e0a3d99),
     .o(al_5453b25d[6]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_e8edcf74 (
-    .a(al_e4420455),
-    .b(Data_to_IP[7]),
-    .c(TRDY),
-    .d(al_5d71a43c),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[7]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_5d71a43c),
     .o(al_5453b25d[7]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_3dbe3e9c (
-    .a(al_e4420455),
-    .b(Data_to_IP[8]),
-    .c(TRDY),
-    .d(al_900868d2),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[8]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_900868d2),
     .o(al_5453b25d[8]));
-  AL_MAP_LUT4 #(
-    .EQN("(D*~(B)*~((C*A))+D*B*~((C*A))+~(D)*B*(C*A)+D*B*(C*A))"),
-    .INIT(16'hdf80))
+  AL_MAP_LUT6 #(
+    .EQN("(F*~(C)*~((E*D*~B*~A))+F*C*~((E*D*~B*~A))+~(F)*C*(E*D*~B*~A)+F*C*(E*D*~B*~A))"),
+    .INIT(64'hfeffffff10000000))
     al_399ef3ed (
-    .a(al_e4420455),
-    .b(Data_to_IP[9]),
-    .c(TRDY),
-    .d(al_5dadb41f),
+    .a(Address[1]),
+    .b(Address[0]),
+    .c(Data_to_IP[9]),
+    .d(Write),
+    .e(TRDY),
+    .f(al_5dadb41f),
     .o(al_5453b25d[9]));
   AL_MAP_LUT5 #(
     .EQN("((E*~(D)*~(B)+E*D*~(B)+~(E)*D*B+E*D*B)*~(C)*~(A)+(E*~(D)*~(B)+E*D*~(B)+~(E)*D*B+E*D*B)*C*~(A)+~((E*~(D)*~(B)+E*D*~(B)+~(E)*D*B+E*D*B))*C*A+(E*~(D)*~(B)+E*D*~(B)+~(E)*D*B+E*D*B)*C*A)"),
     .INIT(32'hf5b1e4a0))
     al_5f6e845d (
-    .a(al_1faeedd),
+    .a(al_5ab085c0),
     .b(al_86707615),
     .c(al_ec1061c3),
     .d(al_99594f3a),
@@ -7760,49 +7823,30 @@ module spi_master_core
     al_e98f15dd (
     .i(al_48a3dd9b[7]),
     .o(al_99594f3a));
-  AL_MAP_LUT4 #(
-    .EQN("(~D*~C*~B*~A)"),
-    .INIT(16'h0001))
+  AL_MAP_LUT5 #(
+    .EQN("(E*D*C*B*A)"),
+    .INIT(32'h80000000))
     al_3eec8209 (
-    .a(al_c76a99cf[12]),
-    .b(al_c76a99cf[13]),
-    .c(al_c76a99cf[14]),
-    .d(al_c76a99cf[15]),
-    .o(al_cca4db32));
-  AL_MAP_LUT5 #(
-    .EQN("(~E*~D*~C*~B*A)"),
-    .INIT(32'h00000002))
-    al_5ab085c0 (
-    .a(al_cca4db32),
-    .b(al_c76a99cf[8]),
-    .c(al_c76a99cf[9]),
-    .d(al_c76a99cf[10]),
-    .e(al_c76a99cf[11]),
-    .o(al_96c8991));
-  AL_MAP_LUT5 #(
-    .EQN("(~E*~D*C*B*A)"),
-    .INIT(32'h00000080))
-    al_e9933595 (
-    .a(al_f995363),
-    .b(al_c45e9530),
-    .c(al_24baa884),
+    .a(al_b5e07e5b),
+    .b(al_e2fc5be6),
+    .c(al_c0d928dd),
     .d(al_c76a99cf[0]),
-    .e(al_c76a99cf[1]),
-    .o(al_ca62814));
+    .e(al_c76a99cf[5]),
+    .o(al_3edb010f));
   AL_MAP_LUT4 #(
-    .EQN("~((B*A)*~(D)*~(C)+(B*A)*D*~(C)+~((B*A))*D*C+(B*A)*D*C)"),
-    .INIT(16'h07f7))
-    al_f0c63b0f (
-    .a(al_96c8991),
-    .b(al_ca62814),
-    .c(al_a6ad7f88),
+    .EQN("~((C*A)*~(D)*~(B)+(C*A)*D*~(B)+~((C*A))*D*B+(C*A)*D*B)"),
+    .INIT(16'h13df))
+    al_cca4db32 (
+    .a(al_3edb010f),
+    .b(al_a6ad7f88),
+    .c(al_24baa884),
     .d(al_a1beff56),
-    .o(al_1faeedd));
+    .o(al_5ab085c0));
   AL_MAP_LUT6 #(
     .EQN("((F*~(E)*~((~B*~A))+F*E*~((~B*~A))+~(F)*E*(~B*~A)+F*E*(~B*~A))*~(D)*~(C)+(F*~(E)*~((~B*~A))+F*E*~((~B*~A))+~(F)*E*(~B*~A)+F*E*(~B*~A))*D*~(C)+~((F*~(E)*~((~B*~A))+F*E*~((~B*~A))+~(F)*E*(~B*~A)+F*E*(~B*~A)))*D*C+(F*~(E)*~((~B*~A))+F*E*~((~B*~A))+~(F)*E*(~B*~A)+F*E*(~B*~A))*D*C)"),
     .INIT(64'hff0ffe0ef101f000))
-    al_8ae10550 (
-    .a(al_1faeedd),
+    al_96c8991 (
+    .a(al_5ab085c0),
     .b(al_86707615),
     .c(al_b60cf795),
     .d(al_9d1d7c4),
@@ -7810,87 +7854,88 @@ module spi_master_core
     .f(al_2d9c4c87),
     .o(al_94387d16[0]));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_9b042f1 (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_f9b9b042),
     .d(al_7eec04ff),
     .e(al_59c1f936),
     .f(al_2d9c4c87),
     .o(al_94387d16[1]));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_3ada88b3 (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_467b626f),
     .d(al_458f4867),
     .e(al_7eec04ff),
     .f(al_59c1f936),
     .o(al_94387d16[2]));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_6fbec820 (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_5422678),
     .d(al_ce384824),
     .e(al_458f4867),
     .f(al_7eec04ff),
     .o(al_94387d16[3]));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_d748274a (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_388518b3),
     .d(al_57e28aae),
     .e(al_ce384824),
     .f(al_458f4867),
     .o(al_94387d16[4]));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_c50ab4d0 (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_4efe4774),
     .d(al_e7f2ceb8),
     .e(al_57e28aae),
     .f(al_ce384824),
     .o(al_94387d16[5]));
-  AL_MAP_LUT5 #(
-    .EQN("(~D*((B*A)*~(E)*~(C)+(B*A)*E*~(C)+~((B*A))*E*C+(B*A)*E*C))"),
-    .INIT(32'h00f80008))
+  AL_MAP_LUT6 #(
+    .EQN("(~D*((E*B*A)*~(F)*~(C)+(E*B*A)*F*~(C)+~((E*B*A))*F*C+(E*B*A)*F*C))"),
+    .INIT(64'h00f800f000080000))
     al_584af3a9 (
-    .a(al_96c8991),
-    .b(al_ca62814),
+    .a(al_b8a62983),
+    .b(al_b5e07e5b),
     .c(al_a6ad7f88),
     .d(al_b60cf795),
-    .e(al_a1beff56),
+    .e(al_24baa884),
+    .f(al_a1beff56),
     .o(al_1667705b));
   AL_MAP_LUT6 #(
-    .EQN("(~E*~(D*((B*A)*~(F)*~(C)+(B*A)*F*~(C)+~((B*A))*F*C+(B*A)*F*C)))"),
-    .INIT(64'h000007ff0000f7ff))
+    .EQN("(~D*~(C*((E*A)*~(F)*~(B)+(E*A)*F*~(B)+~((E*A))*F*B+(E*A)*F*B)))"),
+    .INIT(64'h001f003f00df00ff))
     al_2f954667 (
-    .a(al_96c8991),
-    .b(al_ca62814),
-    .c(al_a6ad7f88),
-    .d(al_86707615),
-    .e(al_b60cf795),
+    .a(al_3edb010f),
+    .b(al_a6ad7f88),
+    .c(al_86707615),
+    .d(al_b60cf795),
+    .e(al_24baa884),
     .f(al_a1beff56),
     .o(al_e11073c6));
   AL_MAP_LUT6 #(
-    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+~(A)*B*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+~(A)*B*C*~(D)*E*~(F)+~(A)*B*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+~(A)*B*C*D*E*~(F)+A*B*C*D*E*~(F)+A*~(B)*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+A*~(B)*C*~(D)*~(E)*F+A*~(B)*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+A*~(B)*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
-    .INIT(64'hfe76ba32dc549810))
+    .EQN("(~(A)*~(B)*C*~(D)*~(E)*~(F)+A*B*~(C)*D*~(E)*~(F)+~(A)*~(B)*C*D*~(E)*~(F)+A*B*C*D*~(E)*~(F)+A*~(B)*~(C)*~(D)*E*~(F)+~(A)*~(B)*C*~(D)*E*~(F)+A*~(B)*C*~(D)*E*~(F)+A*~(B)*~(C)*D*E*~(F)+A*B*~(C)*D*E*~(F)+~(A)*~(B)*C*D*E*~(F)+A*~(B)*C*D*E*~(F)+A*B*C*D*E*~(F)+~(A)*B*~(C)*~(D)*~(E)*F+~(A)*~(B)*C*~(D)*~(E)*F+~(A)*B*C*~(D)*~(E)*F+~(A)*B*~(C)*D*~(E)*F+A*B*~(C)*D*~(E)*F+~(A)*~(B)*C*D*~(E)*F+~(A)*B*C*D*~(E)*F+A*B*C*D*~(E)*F+A*~(B)*~(C)*~(D)*E*F+~(A)*B*~(C)*~(D)*E*F+~(A)*~(B)*C*~(D)*E*F+A*~(B)*C*~(D)*E*F+~(A)*B*C*~(D)*E*F+A*~(B)*~(C)*D*E*F+~(A)*B*~(C)*D*E*F+A*B*~(C)*D*E*F+~(A)*~(B)*C*D*E*F+A*~(B)*C*D*E*F+~(A)*B*C*D*E*F+A*B*C*D*E*F)"),
+    .INIT(64'hfe76dc54ba329810))
     al_51cbdd0b (
-    .a(al_1667705b),
-    .b(al_e11073c6),
+    .a(al_e11073c6),
+    .b(al_1667705b),
     .c(al_3e0a3d99),
     .d(al_99594f3a),
     .e(al_e7f2ceb8),
@@ -7900,7 +7945,7 @@ module spi_master_core
     .EQN("((E*~(F)*~((B*~A))+E*F*~((B*~A))+~(E)*F*(B*~A)+E*F*(B*~A))*~(D)*~(C)+(E*~(F)*~((B*~A))+E*F*~((B*~A))+~(E)*F*(B*~A)+E*F*(B*~A))*D*~(C)+~((E*~(F)*~((B*~A))+E*F*~((B*~A))+~(E)*F*(B*~A)+E*F*(B*~A)))*D*C+(E*~(F)*~((B*~A))+E*F*~((B*~A))+~(E)*F*(B*~A)+E*F*(B*~A))*D*C)"),
     .INIT(64'hff0ff404fb0bf000))
     al_945cfc6d (
-    .a(al_1faeedd),
+    .a(al_5ab085c0),
     .b(al_86707615),
     .c(al_b60cf795),
     .d(al_5d71a43c),

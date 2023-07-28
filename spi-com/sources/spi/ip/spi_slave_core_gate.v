@@ -1,5 +1,5 @@
 // Verilog netlist created by Tang Dynasty v5.6.71036
-// Mon Jul 24 10:56:31 2023
+// Fri Jul 28 12:28:18 2023
 
 `timescale 1ns / 1ps
 module spi_slave_core
