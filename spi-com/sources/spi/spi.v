@@ -28,7 +28,8 @@ module spi (
     input           trans_ram_ce,
     input           trans_ram_clk,
 
-    input trans_trig_int
+    input      trans_trig_int,
+    output reg trans_trig_finish_int
 );
 
   wire [ 7 : 0] spi_config_ram_data_out;
@@ -137,8 +138,8 @@ module spi (
   );
 
   reg [7 : 0] trans_mode;
-  reg [7 : 0] trans_start_addr;
-  reg [7 : 0] trans_end_addr;
+  reg [7 : 0] trans_start_sec;
+  reg [7 : 0] trans_sec_num;
 
   reg trans_int;
 
@@ -255,7 +256,7 @@ module spi (
           end
         end
         STATE_RX_DATA_1: begin
-          if (!spi_slave_core_rrdy) begin
+          if (spi_slave_core_data_read) begin
             if (config_ram_si < arg_1_buf) begin
               state <= STATE_RX_DATA_0;
             end else begin
@@ -283,7 +284,7 @@ module spi (
         end
         STATE_TX_DATA_4: begin
           if (spi_slave_core_rrdy && spi_slave_core_data_read) begin
-            if (config_ram_si < arg_1_buf) begin
+            if (config_ram_si < arg_1_buf + 1) begin
               state <= STATE_TX_DATA_0;
             end else begin
               state <= STATE_READ_OPTION;
@@ -385,8 +386,8 @@ module spi (
       arg_1_buf                 <= 8'h00;
 
       trans_mode                <= 8'h00;
-      trans_start_addr          <= 8'h00;
-      trans_end_addr            <= 8'h00;
+      trans_start_sec           <= 8'h00;
+      trans_sec_num             <= 8'h00;
 
       spi_slave_core_address    <= 2'h0;
       spi_slave_core_data_in    <= 32'h0000_0000;
@@ -425,8 +426,8 @@ module spi (
           arg_1_buf              <= 8'h00;
 
           trans_mode             <= 8'h00;
-          trans_start_addr       <= 8'h00;
-          trans_end_addr         <= 8'h00;
+          trans_start_sec        <= 8'h00;
+          trans_sec_num          <= 8'h00;
 
           spi_config_ram_data_in <= 8'h00;
           spi_config_ram_addr    <= config_ram_ci;
@@ -437,16 +438,16 @@ module spi (
           trans_int              <= 1'b0;
         end
         STATE_READ_OPTION: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= 8'h00;
-          arg_0_buf        <= 8'h00;
-          arg_1_buf        <= 8'h00;
+          option_buf      <= 8'h00;
+          arg_0_buf       <= 8'h00;
+          arg_1_buf       <= 8'h00;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -484,8 +485,8 @@ module spi (
           end
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -502,16 +503,16 @@ module spi (
         end
 
         STATE_READ_ADDR: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -548,8 +549,8 @@ module spi (
           end
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -565,16 +566,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_READ_LENGTH: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -611,8 +612,8 @@ module spi (
           end
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -628,16 +629,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_RX_DATA_0: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= config_ram_si;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= config_ram_si;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -667,8 +668,8 @@ module spi (
           arg_1_buf                 <= arg_1_buf;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -703,8 +704,8 @@ module spi (
           arg_1_buf                 <= arg_1_buf;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -728,8 +729,8 @@ module spi (
           arg_1_buf                 <= arg_1_buf;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -753,8 +754,8 @@ module spi (
           arg_1_buf                 <= arg_1_buf;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= {24'b0, spi_config_ram_data_out};
@@ -778,8 +779,8 @@ module spi (
           arg_1_buf                 <= arg_1_buf;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -795,16 +796,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_TX_DATA_4: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= config_ram_si;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= config_ram_si;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -826,16 +827,16 @@ module spi (
           trans_int              <= 1'b0;
         end
         STATE_INT_READ_LOW_BYTE: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -872,8 +873,8 @@ module spi (
           end
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -889,16 +890,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_INT_READ_HIGH_BYTE: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -935,8 +936,8 @@ module spi (
           end
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -960,8 +961,8 @@ module spi (
           arg_1_buf              <= arg_1_buf;
 
           trans_mode             <= trans_mode;
-          trans_start_addr       <= trans_start_addr;
-          trans_end_addr         <= trans_end_addr;
+          trans_start_sec        <= trans_start_sec;
+          trans_sec_num          <= trans_sec_num;
 
           spi_slave_core_address <= 2'h0;
           spi_slave_core_data_in <= 32'h0000_0000;
@@ -975,16 +976,16 @@ module spi (
           trans_int              <= 1'b0;
         end
         STATE_TRANS_READ_MODE: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -1015,13 +1016,13 @@ module spi (
           arg_1_buf <= arg_1_buf;
 
           if (spi_slave_core_data_read) begin
-            trans_mode       <= spi_slave_core_data_out[7 : 0];
-            trans_start_addr <= trans_start_addr;
-            trans_end_addr   <= trans_end_addr;
+            trans_mode      <= spi_slave_core_data_out[7 : 0];
+            trans_start_sec <= trans_start_sec;
+            trans_sec_num   <= trans_sec_num;
           end else begin
-            trans_mode       <= trans_mode;
-            trans_start_addr <= trans_start_addr;
-            trans_end_addr   <= trans_end_addr;
+            trans_mode      <= trans_mode;
+            trans_start_sec <= trans_start_sec;
+            trans_sec_num   <= trans_sec_num;
           end
 
           spi_slave_core_address    <= 2'h0;
@@ -1038,16 +1039,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_TRANS_READ_S_ADDR: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -1079,13 +1080,13 @@ module spi (
           arg_1_buf <= arg_1_buf;
 
           if (spi_slave_core_data_read) begin
-            trans_mode       <= trans_mode;
-            trans_start_addr <= spi_slave_core_data_out[7 : 0];
-            trans_end_addr   <= trans_end_addr;
+            trans_mode      <= trans_mode;
+            trans_start_sec <= spi_slave_core_data_out[7 : 0];
+            trans_sec_num   <= trans_sec_num;
           end else begin
-            trans_mode       <= trans_mode;
-            trans_start_addr <= trans_start_addr;
-            trans_end_addr   <= trans_end_addr;
+            trans_mode      <= trans_mode;
+            trans_start_sec <= trans_start_sec;
+            trans_sec_num   <= trans_sec_num;
           end
 
           spi_slave_core_address    <= 2'h0;
@@ -1103,16 +1104,16 @@ module spi (
           trans_int                 <= 1'b0;
         end
         STATE_TRANS_READ_E_ADDR: begin
-          config_ram_ci    <= 32'h0000_0000;
-          config_ram_si    <= 32'h0000_0000;
+          config_ram_ci   <= 32'h0000_0000;
+          config_ram_si   <= 32'h0000_0000;
 
-          option_buf       <= option_buf;
-          arg_0_buf        <= arg_0_buf;
-          arg_1_buf        <= arg_1_buf;
+          option_buf      <= option_buf;
+          arg_0_buf       <= arg_0_buf;
+          arg_1_buf       <= arg_1_buf;
 
-          trans_mode       <= trans_mode;
-          trans_start_addr <= trans_start_addr;
-          trans_end_addr   <= trans_end_addr;
+          trans_mode      <= trans_mode;
+          trans_start_sec <= trans_start_sec;
+          trans_sec_num   <= trans_sec_num;
 
           if (spi_slave_core_rrdy) begin
             spi_slave_core_address    <= 2'h1;
@@ -1144,13 +1145,13 @@ module spi (
           arg_1_buf <= arg_1_buf;
 
           if (spi_slave_core_data_read) begin
-            trans_mode       <= trans_mode;
-            trans_start_addr <= trans_start_addr;
-            trans_end_addr   <= spi_slave_core_data_out[7 : 0];
+            trans_mode      <= trans_mode;
+            trans_start_sec <= trans_start_sec;
+            trans_sec_num   <= spi_slave_core_data_out[7 : 0];
           end else begin
-            trans_mode       <= trans_mode;
-            trans_start_addr <= trans_start_addr;
-            trans_end_addr   <= trans_end_addr;
+            trans_mode      <= trans_mode;
+            trans_start_sec <= trans_start_sec;
+            trans_sec_num   <= trans_sec_num;
           end
 
           spi_slave_core_address    <= 2'h0;
@@ -1176,8 +1177,8 @@ module spi (
           arg_1_buf                 <= 8'h00;
 
           trans_mode                <= trans_mode;
-          trans_start_addr          <= trans_start_addr;
-          trans_end_addr            <= trans_end_addr;
+          trans_start_sec           <= trans_start_sec;
+          trans_sec_num             <= trans_sec_num;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -1202,8 +1203,8 @@ module spi (
           arg_1_buf                 <= 8'h00;
 
           trans_mode                <= 8'h00;
-          trans_start_addr          <= 8'h00;
-          trans_end_addr            <= 8'h00;
+          trans_start_sec           <= 8'h00;
+          trans_sec_num             <= 8'h00;
 
           spi_slave_core_address    <= 2'h0;
           spi_slave_core_data_in    <= 32'h0000_0000;
@@ -1224,22 +1225,22 @@ module spi (
   end
 
   reg [7 : 0] trans_mode_buf;
-  reg [7 : 0] trans_start_addr_buf;
-  reg [7 : 0] trans_end_addr_buf;
+  reg [7 : 0] trans_start_sec_buf;
+  reg [7 : 0] trans_sec_num_buf;
   always @(posedge clk) begin
     if (!rstn) begin
-      trans_mode_buf       <= 8'h00;
-      trans_start_addr_buf <= 8'h00;
-      trans_end_addr_buf   <= 8'h00;
+      trans_mode_buf      <= 8'h00;
+      trans_start_sec_buf <= 8'h00;
+      trans_sec_num_buf   <= 8'h00;
     end else begin
       if (trans_int) begin
-        trans_mode_buf       <= trans_mode;
-        trans_start_addr_buf <= trans_start_addr;
-        trans_end_addr_buf   <= trans_end_addr;
+        trans_mode_buf      <= trans_mode;
+        trans_start_sec_buf <= trans_start_sec;
+        trans_sec_num_buf   <= trans_sec_num;
       end else begin
-        trans_mode_buf       <= trans_mode_buf;
-        trans_start_addr_buf <= trans_start_addr_buf;
-        trans_end_addr_buf   <= trans_end_addr_buf;
+        trans_mode_buf      <= trans_mode_buf;
+        trans_start_sec_buf <= trans_start_sec_buf;
+        trans_sec_num_buf   <= trans_sec_num_buf;
       end
     end
   end
@@ -1252,6 +1253,9 @@ module spi (
   reg [31 : 0] trans_ram_ci;
   reg [31 : 0] trans_ram_si;
   localparam TRANS_RAM_LENGTH = 32'd65536;
+
+  reg [31 : 0] trans_wait_cnt;
+  localparam WAIT_DELAY = 350;
 
   reg [7 : 0] trans_state;
   localparam TRANS_STATE_RESET = 8'h00;
@@ -1293,7 +1297,11 @@ module spi (
         end
         TRANS_STATE_WRITE_DATA_1: begin
           if (spi_master_core_trdy) begin
-            trans_state <= TRANS_STATE_WRITE_DATA_2;
+            if (trans_wait_cnt < WAIT_DELAY) begin
+              trans_state <= TRANS_STATE_WRITE_DATA_1;
+            end else begin
+              trans_state <= TRANS_STATE_WRITE_DATA_2;
+            end
           end else begin
             trans_state <= TRANS_STATE_WRITE_DATA_1;
           end
@@ -1305,7 +1313,7 @@ module spi (
                 trans_state <= TRANS_STATE_READ_MODE;
               end
               TRANS_MODE_CONTINUES: begin
-                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                if (trans_ram_si < {trans_start_sec_buf + trans_sec_num_buf + 1, 8'h00} - 1) begin
                   trans_state <= TRANS_STATE_WRITE_DATA_0;
                 end else begin
                   trans_state <= TRANS_STATE_READ_MODE;
@@ -1315,7 +1323,7 @@ module spi (
                 trans_state <= TRANS_STATE_READ_MODE;
               end
               TRANS_MODE_TRIG: begin
-                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                if (trans_ram_si < {trans_start_sec_buf + trans_sec_num_buf + 1, 8'h00} - 1) begin
                   trans_state <= TRANS_STATE_WRITE_DATA_0;
                 end else begin
                   trans_state <= TRANS_STATE_READ_MODE;
@@ -1339,6 +1347,7 @@ module spi (
   always @(posedge clk) begin
     if (!rstn) begin
       trans_ram_ci               <= 32'h0;
+      trans_wait_cnt             <= 32'h0;
       trans_ram_si               <= 32'h0;
 
       spi_master_core_address    <= 2'b0;
@@ -1358,6 +1367,7 @@ module spi (
           end else begin
             trans_ram_ci <= 32'h0;
           end
+          trans_wait_cnt             <= 32'h0;
           trans_ram_si               <= 32'h0;
 
           spi_master_core_address    <= 2'h0;
@@ -1369,12 +1379,15 @@ module spi (
           spi_trans_ram_addr         <= 16'h0000;
           spi_trans_ram_ce           <= 1'b0;
           spi_trans_ram_we           <= 1'b0;
+
+          trans_trig_finish_int      <= 1'b0;
         end
         TRANS_STATE_READ_MODE: begin
-          trans_ram_ci <= 32'h0;
+          trans_ram_ci   <= 32'h0;
+          trans_wait_cnt <= 32'h0;
           case (trans_mode_buf)
-            TRANS_MODE_CONTINUES: trans_ram_si <= {trans_start_addr_buf, 8'h0};
-            TRANS_MODE_KEEP:      trans_ram_si <= {trans_start_addr_buf, trans_end_addr_buf};
+            TRANS_MODE_CONTINUES: trans_ram_si <= {trans_start_sec_buf, 8'h0};
+            TRANS_MODE_KEEP:      trans_ram_si <= {trans_start_sec_buf, trans_sec_num_buf};
             default:              trans_ram_si <= 32'h0;
           endcase
 
@@ -1387,9 +1400,12 @@ module spi (
           spi_trans_ram_addr         <= 16'h0000;
           spi_trans_ram_ce           <= 1'b0;
           spi_trans_ram_we           <= 1'b0;
+
+          trans_trig_finish_int      <= 1'b0;
         end
         TRANS_STATE_WRITE_DATA_0: begin
           trans_ram_ci               <= 32'h0;
+          trans_wait_cnt             <= 32'h0;
           trans_ram_si               <= trans_ram_si;
 
           spi_master_core_address    <= 2'b0;
@@ -1401,60 +1417,90 @@ module spi (
           spi_trans_ram_addr         <= trans_ram_si;
           spi_trans_ram_ce           <= 1'b1;
           spi_trans_ram_we           <= 1'b0;
+
+          trans_trig_finish_int      <= 1'b0;
         end
         TRANS_STATE_WRITE_DATA_1: begin
           trans_ram_ci <= 32'h0;
-          trans_ram_si <= trans_ram_si;
+          if (trans_wait_cnt < WAIT_DELAY) begin
+            trans_wait_cnt <= trans_wait_cnt + 1;
 
-          if (spi_master_core_trdy) begin
             spi_master_core_address    <= 2'b0;
-            spi_master_core_data_in    <= spi_trans_ram_data_out;
-            spi_master_core_data_read  <= 1'b0;
-            spi_master_core_data_write <= 1'b1;
-          end else if (spi_master_core_rrdy) begin
-            spi_master_core_address    <= 2'b1;
             spi_master_core_data_in    <= 32'h0;
-            spi_master_core_data_read  <= 1'b1;
+            spi_master_core_data_read  <= 1'b0;
             spi_master_core_data_write <= 1'b0;
           end else begin
-            spi_master_core_address    <= 2'b0;
-            spi_master_core_data_in    <= 32'h0;
-            spi_master_core_data_read  <= 1'b0;
-            spi_master_core_data_write <= 1'b0;
+            trans_wait_cnt <= 32'h0;
+
+            if (spi_master_core_trdy) begin
+              if (trans_wait_cnt < WAIT_DELAY) begin
+                spi_master_core_address    <= 2'b0;
+                spi_master_core_data_in    <= 32'h0;
+                spi_master_core_data_read  <= 1'b0;
+                spi_master_core_data_write <= 1'b1;
+              end else begin
+                spi_master_core_address    <= 2'b0;
+                spi_master_core_data_in    <= spi_trans_ram_data_out;
+                spi_master_core_data_read  <= 1'b0;
+                spi_master_core_data_write <= 1'b1;
+              end
+            end else if (spi_master_core_rrdy) begin
+              spi_master_core_address    <= 2'b1;
+              spi_master_core_data_in    <= 32'h0;
+              spi_master_core_data_read  <= 1'b1;
+              spi_master_core_data_write <= 1'b0;
+            end else begin
+              spi_master_core_address    <= 2'b0;
+              spi_master_core_data_in    <= 32'h0;
+              spi_master_core_data_read  <= 1'b0;
+              spi_master_core_data_write <= 1'b0;
+            end
           end
+          trans_ram_si          <= trans_ram_si;
 
           spi_trans_ram_data_in <= 8'h00;
           spi_trans_ram_addr    <= 8'h0;
           spi_trans_ram_ce      <= 1'b0;
           spi_trans_ram_we      <= 1'b0;
+
+          trans_trig_finish_int <= 1'b0;
         end
         TRANS_STATE_WRITE_DATA_2: begin
-          trans_ram_ci <= 32'h0;
+          trans_ram_ci   <= 32'h0;
+          trans_wait_cnt <= 32'h0;
           if (!spi_master_core_trdy) begin
             case (trans_mode_buf)
               TRANS_MODE_CONTINUES: begin
-                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
+                if (trans_ram_si < {trans_start_sec_buf + trans_sec_num_buf + 1, 8'h00} - 1) begin
                   trans_ram_si <= trans_ram_si + 1;
                 end else begin
                   trans_ram_si <= 32'h0;
                 end
+
+                trans_trig_finish_int <= 1'b0;
               end
               TRANS_MODE_KEEP: begin
-                trans_ram_si <= trans_ram_si;
+                trans_ram_si          <= trans_ram_si;
+
+                trans_trig_finish_int <= 1'b0;
               end
               TRANS_MODE_TRIG: begin
-                if (trans_ram_si < {trans_end_addr_buf, 8'h00} - 1) begin
-                  trans_ram_si <= trans_ram_si + 1;
+                if (trans_ram_si < {trans_start_sec_buf + trans_sec_num_buf + 1, 8'h00} - 1) begin
+                  trans_ram_si          <= trans_ram_si + 1;
+
+                  trans_trig_finish_int <= 1'b0;
                 end else begin
-                  trans_ram_si <= 32'h0;
+                  trans_ram_si          <= 32'h0;
+
+                  trans_trig_finish_int <= 1'b1;
                 end
               end
               default: begin
-                trans_ram_si <= 32'h0;
+                trans_ram_si          <= 32'h0;
+
+                trans_trig_finish_int <= 1'b0;
               end
             endcase
-          end else begin
-            trans_ram_si <= trans_ram_si;
           end
 
           spi_master_core_address    <= 2'b0;
@@ -1469,6 +1515,7 @@ module spi (
         end
         default: begin
           trans_ram_ci               <= 32'h0;
+          trans_wait_cnt             <= 32'h0;
           trans_ram_si               <= 32'h0;
 
           spi_master_core_address    <= 2'b0;
@@ -1480,6 +1527,8 @@ module spi (
           spi_trans_ram_addr         <= 16'h0000;
           spi_trans_ram_ce           <= 1'b0;
           spi_trans_ram_we           <= 1'b0;
+
+          trans_trig_finish_int      <= 1'b0;
         end
       endcase
     end
